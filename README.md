@@ -86,7 +86,7 @@ of the **GraphlyWindow**. Below is a description of the entire UI System.<br>
 > This component is work in progress.
 
 **GraphlyUI** also provides predefined ui elements of type: TextField, Button, Image.
-> Those ui elements don't have an implementation yet.
+> Those ui elements don't have an implementation yet.<br>
 **UIElement** is an abstract class that provides a base for ui elements. Every ui element
 holds a collection of child ui elements and every ui element holds a pointer to its parent
 (root element has the parent pointer set to null).
