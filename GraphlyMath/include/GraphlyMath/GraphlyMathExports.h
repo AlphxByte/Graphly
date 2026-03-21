@@ -1,0 +1,14 @@
+#ifndef GRAPHLYMATH_EXPORTS_HEADER
+#define GRAPHLYMATH_EXPORTS_HEADER
+
+#ifndef GRAPHLYMATH_API
+
+#ifdef GRAPHLYMATH_EXPORTS
+#define GRAPHLYMATH_API __declspec(dllexport)
+#else
+#define GRAPHLYMATH_API __declspec(dllimport)
+#endif // GRAPHLYMATH_EXPORTS
+
+#endif // GRAPHLYMATH_API
+
+#endif // GRAPHLYUI_EXPORTS_HEADER

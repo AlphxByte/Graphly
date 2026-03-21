@@ -1,0 +1,3 @@
+[Information]: App was initialized!
+[Information]: App running!
+[Information]: App was destroyed!
