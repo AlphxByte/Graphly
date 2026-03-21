@@ -71,7 +71,7 @@ floats inside a **Vector** object.
 is of type **Vector**.
 
 ### UI System
-**GraphlyUI** project is a dll that is used by the App component to initialize the UI System
+1. **GraphlyUI** project is a dll that is used by the App component to initialize the UI System
 of the **GraphlyWindow**. Below is a description of the entire UI System.<br>
 
 - Window
@@ -80,14 +80,15 @@ of the **GraphlyWindow**. Below is a description of the entire UI System.<br>
 		- UIElement (root of the ui tree)
 		- UIRenderer 
 
-1. **UIContext** component is the root component for all the UI subcomponents.
-2. **UIFactory** component is used for creating generic **UIElement** objects.
-3. **UIRenderer** 
+- **UIContext** component is the root component for all the UI subcomponents.
+- **UIFactory** component is used for creating generic **UIElement** objects.
+- **UIRenderer** 
 > This component is work in progress.
 
 **GraphlyUI** also provides predefined ui elements of type: TextField, Button, Image.
-> Those ui elements don't have an implementation yet.<br>
-**UIElement** is an abstract class that provides a base for ui elements. Every ui element
+> Those ui elements don't have an implementation yet.
+
+2. **UIElement** is an abstract class that provides a base for ui elements. Every ui element
 holds a collection of child ui elements and every ui element holds a pointer to its parent
 (root element has the parent pointer set to null).
 
