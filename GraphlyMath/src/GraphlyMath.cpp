@@ -1,4 +1,4 @@
-#include "GraphlyMath.h"
+#include "GraphlyMath/GraphlyMath.h"
 
 #include <limits>
 

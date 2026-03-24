@@ -1,6 +1,6 @@
 #include <filesystem>
 
-#include "../include/Graphly/App.h"
+#include "Graphly/App/App.h"
 
 using namespace Graphly;
 using namespace GraphlyUI;

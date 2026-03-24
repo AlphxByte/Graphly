@@ -1,4 +1,4 @@
-#include "../include/Graphly/Logger.h"
+#include "Graphly/App/Logger.h"
 
 #include <windows.h>
 

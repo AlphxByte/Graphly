@@ -1,4 +1,4 @@
-#include "../include/Graphly/GraphlyWindow.h"
+#include "Graphly/App/GraphlyWindow.h"
 
 using namespace Graphly;
 using namespace GraphlyUI;

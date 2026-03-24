@@ -1,7 +1,7 @@
 #ifndef GRAPHLYUI_WIBDOW_STYLES_HEADER
 #define GRAPHLYUI_WIBDOW_STYLES_HEADER
 
-#include "GraphlyUIExports.h"
+#include "../GraphlyUIExports.h"
 
 #include <windows.h>
 

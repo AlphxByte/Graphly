@@ -1,10 +1,10 @@
 #ifndef GRAPHLYUI_UIFACTORY_HEADER
 #define GRAPHLYUI_UIFACTORY_HEADER
 
-#include "../include/GraphlyUI/UIElement.h"
-#include "../include/GraphlyUI/TextField.h"
-#include "../include/GraphlyUI/Button.h"
-#include "../include/GraphlyUI/Image.h"
+#include "GraphlyUI/Window/UIElement/UIElement.h"
+#include "GraphlyUI/Window/UIElement/TextField.h"
+#include "GraphlyUI/Window/UIElement/Button.h"
+#include "GraphlyUI/Window/UIElement/Image.h"
 
 #include <windows.h>
 #include <string>

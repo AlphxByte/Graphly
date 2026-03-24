@@ -4,7 +4,7 @@
 #include "GraphlyWindow.h"
 #include "Logger.h"
 #include "MemoryTracker.h"
-#include "SystemMetrics.h"
+#include "../SystemMetrics.h"
 
 #include <optional>
 #include <memory>

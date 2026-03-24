@@ -18,16 +18,16 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\App.cpp">
+    <ClCompile Include="src\App\App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GraphlyWindow.cpp">
+    <ClCompile Include="src\App\GraphlyWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Logger.cpp">
+    <ClCompile Include="src\App\Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\MemoryTracker.cpp">
+    <ClCompile Include="src\App\MemoryTracker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\SystemMetrics.cpp">
@@ -35,16 +35,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Graphly\App.h">
+    <ClInclude Include="include\Graphly\App\App.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Graphly\GraphlyWindow.h">
+    <ClInclude Include="include\Graphly\App\GraphlyWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Graphly\Logger.h">
+    <ClInclude Include="include\Graphly\App\Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Graphly\MemoryTracker.h">
+    <ClInclude Include="include\Graphly\App\MemoryTracker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Graphly\SystemMetrics.h">

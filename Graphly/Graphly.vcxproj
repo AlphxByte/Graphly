@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>
       </PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\GraphlyUI\include;$(ProjectDir)..\GraphlyMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Graphly\include;$(ProjectDir)..\GraphlyUI\include;$(ProjectDir)..\GraphlyMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp23</LanguageStandard>
       <PrecompiledHeaderFile />
     </ClCompile>
@@ -123,7 +123,7 @@
       <PreprocessorDefinitions>
       </PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\GraphlyUI\include;$(ProjectDir)..\GraphlyMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Graphly\include;$(ProjectDir)..\GraphlyUI\include;$(ProjectDir)..\GraphlyMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp23</LanguageStandard>
       <PrecompiledHeaderFile />
     </ClCompile>
@@ -135,18 +135,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Logger.cpp" />
+    <ClCompile Include="src\App\Logger.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\GraphlyWindow.cpp" />
-    <ClCompile Include="src\App.cpp" />
-    <ClCompile Include="src\MemoryTracker.cpp" />
+    <ClCompile Include="src\App\GraphlyWindow.cpp" />
+    <ClCompile Include="src\App\App.cpp" />
+    <ClCompile Include="src\App\MemoryTracker.cpp" />
     <ClCompile Include="src\SystemMetrics.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Graphly\App.h" />
-    <ClInclude Include="include\Graphly\GraphlyWindow.h" />
-    <ClInclude Include="include\Graphly\Logger.h" />
-    <ClInclude Include="include\Graphly\MemoryTracker.h" />
+    <ClInclude Include="include\Graphly\App\App.h" />
+    <ClInclude Include="include\Graphly\App\GraphlyWindow.h" />
+    <ClInclude Include="include\Graphly\App\Logger.h" />
+    <ClInclude Include="include\Graphly\App\MemoryTracker.h" />
     <ClInclude Include="include\Graphly\SystemMetrics.h" />
   </ItemGroup>
   <ItemGroup>

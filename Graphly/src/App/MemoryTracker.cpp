@@ -1,4 +1,4 @@
-#include "../include/Graphly/MemoryTracker.h"
+#include "Graphly/App/MemoryTracker.h"
 
 using namespace Graphly;
 

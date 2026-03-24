@@ -1,4 +1,4 @@
-#include "../include/GraphlyUI/Image.h"
+#include "GraphlyUI/Window/UIElement/Image.h"
 
 using namespace GraphlyUI;
 

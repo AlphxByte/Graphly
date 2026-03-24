@@ -1,8 +1,8 @@
 #ifndef GRAPHLYUI_UICONTEXT_HEADER
 #define GRAPHLYUI_UICONTEXT_HEADER
 
-#include "UIFactory.h"
-#include "../include/GraphlyUI/UIElement.h"
+#include "UIFactory/UIFactory.h"
+#include "GraphlyUI/Window/UIElement/UIElement.h"
 
 namespace GraphlyUI
 {

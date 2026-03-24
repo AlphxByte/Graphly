@@ -1,4 +1,4 @@
-#include "../include/Graphly/SystemMetrics.h"
+#include "Graphly/SystemMetrics.h"
 
 #include <windows.h>
 

@@ -1,5 +1,5 @@
-#include "../include/GraphlyUI/UIElement.h"
-#include "UIFactory.h"
+#include "GraphlyUI/Window/UIElement/UIElement.h"
+#include "../UIContext/UIFactory/UIFactory.h"
 
 #include <queue>
 #include <stdexcept>

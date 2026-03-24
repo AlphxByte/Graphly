@@ -1,8 +1,8 @@
 #ifndef GRAPHLYUI_WINDOWIMPL_HEADER
 #define GRAPHLYUI_WINDOWIMPL_HEADER
 
-#include "../include/GraphlyUI/Window.h"
-#include "UIContext.h"
+#include "GraphlyUI/Window/Window.h"
+#include "UIContext/UIContext.h"
 
 namespace GraphlyUI
 {

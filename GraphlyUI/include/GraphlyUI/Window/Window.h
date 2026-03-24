@@ -6,7 +6,7 @@
 #include <memory>
 
 #include "WindowSettings.h"
-#include "GraphlyUIExports.h"
+#include "../GraphlyUIExports.h"
 
 namespace GraphlyUI
 {

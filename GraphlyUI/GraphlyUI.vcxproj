@@ -21,28 +21,28 @@
   <ItemGroup>
     <ClInclude Include="include\GraphlyUI\GraphlyUIExports.h" />
     <ClInclude Include="include\GraphlyUI\GraphlyUIInclude.h" />
-    <ClInclude Include="include\GraphlyUI\Window.h" />
-    <ClInclude Include="include\GraphlyUI\Button.h" />
-    <ClInclude Include="include\GraphlyUI\Image.h" />
-    <ClInclude Include="include\GraphlyUI\TextField.h" />
-    <ClInclude Include="include\GraphlyUI\UIElement.h" />
-    <ClInclude Include="include\GraphlyUI\WindowFlags.h" />
-    <ClInclude Include="include\GraphlyUI\WindowSettings.h" />
-    <ClInclude Include="src\UIContext.h" />
-    <ClInclude Include="src\UIFactory.h" />
-    <ClInclude Include="src\UIRenderer.h" />
-    <ClInclude Include="src\WindowImpl.h" />
+    <ClInclude Include="include\GraphlyUI\Window\Window.h" />
+    <ClInclude Include="include\GraphlyUI\Window\UIElement\Button.h" />
+    <ClInclude Include="include\GraphlyUI\Window\UIElement\Image.h" />
+    <ClInclude Include="include\GraphlyUI\Window\UIElement\TextField.h" />
+    <ClInclude Include="include\GraphlyUI\Window\UIElement\UIElement.h" />
+    <ClInclude Include="include\GraphlyUI\Window\WindowFlags.h" />
+    <ClInclude Include="include\GraphlyUI\Window\WindowSettings.h" />
+    <ClInclude Include="src\Window\UIContext\UIContext.h" />
+    <ClInclude Include="src\Window\UIContext\UIFactory\UIFactory.h" />
+    <ClInclude Include="src\Window\UIContext\UIRenderer\UIRenderer.h" />
+    <ClInclude Include="src\Window\WindowImpl.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\UIRenderer.cpp" />
-    <ClCompile Include="src\WindowSettings.cpp" />
-    <ClCompile Include="src\Button.cpp" />
-    <ClCompile Include="src\Image.cpp" />
-    <ClCompile Include="src\TextField.cpp" />
-    <ClCompile Include="src\UIContext.cpp" />
-    <ClCompile Include="src\UIElement.cpp" />
-    <ClCompile Include="src\UIFactory.cpp" />
-    <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\Window\UIContext\UIRenderer\UIRenderer.cpp" />
+    <ClCompile Include="src\Window\WindowSettings.cpp" />
+    <ClCompile Include="src\Window\UIElement\Button.cpp" />
+    <ClCompile Include="src\Window\UIElement\Image.cpp" />
+    <ClCompile Include="src\Window\UIElement\TextField.cpp" />
+    <ClCompile Include="src\Window\UIContext\UIContext.cpp" />
+    <ClCompile Include="src\Window\UIElement\UIElement.cpp" />
+    <ClCompile Include="src\Window\UIContext\UIFactory\UIFactory.cpp" />
+    <ClCompile Include="src\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GraphlyMath\GraphlyMath.vcxproj">
@@ -142,7 +142,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\GraphlyMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\GraphlyUI\include;$(ProjectDir)..\GraphlyMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp23</LanguageStandard>
     </ClCompile>
     <Link>
@@ -164,7 +164,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\GraphlyMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\GraphlyUI\include;$(ProjectDir)..\GraphlyMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp23</LanguageStandard>
     </ClCompile>
     <Link>

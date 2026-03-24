@@ -1,4 +1,4 @@
-#include "../include/GraphlyUI/WindowSettings.h"
+#include "GraphlyUI/Window/WindowSettings.h"
 
 using namespace GraphlyUI;
 using namespace GraphlyMath;

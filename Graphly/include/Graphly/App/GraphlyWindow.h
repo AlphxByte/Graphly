@@ -1,7 +1,7 @@
 #ifndef GRAPHLY_GRAPHLYWINDOW_HEADER
 #define GRAPHLY_GRAPHLYWINDOW_HEADER
 
-#include "GraphlyUI/Window.h"
+#include "GraphlyUI/Window/Window.h"
 #include "Logger.h"
 
 namespace Graphly

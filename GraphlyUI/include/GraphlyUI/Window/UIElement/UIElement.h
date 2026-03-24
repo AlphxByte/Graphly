@@ -2,7 +2,7 @@
 #define GRAPHLYUI_UIELEMENT_HEADER
 
 #include "GraphlyMath/GraphlyMath.h"
-#include "GraphlyUIExports.h"
+#include "../../GraphlyUIExports.h"
 
 #include <windows.h>
 #include <unordered_map>
