@@ -20,8 +20,8 @@ libraries will be linked and used by the project in the next release.
 
 ## Project Structure
 1. **Graphly** 
-the main project of Graphly, where you will find the entry point of the application and `main.cpp` 
-file along with the application logic.
+the main project of Graphly, where you will find the entry point of the application 
+and `main.cpp` file inside `Graphly\src` folder along with the application logic.
 
 > The App class right now doesn't contain the application logic yet, only
 initializing core components of the application.
@@ -43,17 +43,18 @@ The application logic is handled by the App and GraphlyWindow classes.
 The App class has 3 main components:
 
 1. **MemoryTracker** for detecting memory leaks and unreleased resources.
-> An issue was found where if an error was thrown by the **App*** class it will show in 
+> An issue was found where if an error was thrown by the **App** class it will show in 
 the output window inside as a memory leak. This is because std::runtime_error allocates 
 a string that was given and that string lasts longer than the **App** class because it needs to be
-used in the catch block inside `main.cpp`. After the catch block ends, the string is deallocated.
+used in the catch block inside `Graphly\src\main.cpp`. After the catch block ends, the string is deallocated.
 
 2. **Logger** component is used for writing messages inside a log file or writing a message using a popup window.
 This component has 3 message types: Information, Warning and Error. If the Logger component 
 doesn't get a file path to a log file to create it; it will be created based on the CurrentDir
 environment variable.
 
-3. **GraphlyWindow** a subclass of **Window** class from the **GraphlyUI** project.
+3. **GraphlyWindow** a subclass of **Window** class from the **GraphlyUI** project. This 
+component is meant to represent the main window of the application.
 > This class is currently empty and doesn't have logic yet.
 
 ### Math library
@@ -90,8 +91,8 @@ holds a collection of child ui elements and every ui element holds a pointer to 
 (root element has the parent pointer set to null).
 
 ## Setup
-1. Visual Studio 2022
-2. C++ Desktop Development
+1. Visual Studio 2022.
+2. C++ Desktop Development.
 
 ## How to Build
 1. Open `Graphly.sln` in Visual Studio.
