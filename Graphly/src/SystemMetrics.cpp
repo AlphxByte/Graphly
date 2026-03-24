@@ -1,8 +1,8 @@
-#include "../include/GraphlyCore/SystemMetrics.h"
+#include "../include/Graphly/SystemMetrics.h"
 
 #include <windows.h>
 
-using namespace GraphlyCore;
+using namespace Graphly;
 
 unsigned SystemMetrics::GetScreenWidth()
 {

@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>
       </PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\GraphlyCore\include;$(ProjectDir)..\GraphlyUI\include;$(ProjectDir)..\GraphlyMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\GraphlyUI\include;$(ProjectDir)..\GraphlyMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp23</LanguageStandard>
       <PrecompiledHeaderFile />
     </ClCompile>
@@ -123,7 +123,7 @@
       <PreprocessorDefinitions>
       </PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\GraphlyCore\include;$(ProjectDir)..\GraphlyUI\include;$(ProjectDir)..\GraphlyMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\GraphlyUI\include;$(ProjectDir)..\GraphlyMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp23</LanguageStandard>
       <PrecompiledHeaderFile />
     </ClCompile>
@@ -135,21 +135,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="include\Graphly\main.cpp" />
-    <ClCompile Include="include\Graphly\GraphlyWindow.cpp" />
-    <ClCompile Include="include\Graphly\App.cpp" />
+    <ClCompile Include="src\Logger.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\GraphlyWindow.cpp" />
+    <ClCompile Include="src\App.cpp" />
+    <ClCompile Include="src\MemoryTracker.cpp" />
+    <ClCompile Include="src\SystemMetrics.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Graphly\App.h" />
     <ClInclude Include="include\Graphly\GraphlyWindow.h" />
+    <ClInclude Include="include\Graphly\Logger.h" />
+    <ClInclude Include="include\Graphly\MemoryTracker.h" />
+    <ClInclude Include="include\Graphly\SystemMetrics.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="x64\Debug\Logs\GraphlyLogs.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GraphlyCore\GraphlyCore.vcxproj">
-      <Project>{b4451793-0ea7-41fe-bb2d-b388f0092090}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\GraphlyMath\GraphlyMath.vcxproj">
       <Project>{3e609121-c733-4df7-a0c0-257b31a382ea}</Project>
     </ProjectReference>

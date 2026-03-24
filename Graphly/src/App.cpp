@@ -1,9 +1,8 @@
 #include <filesystem>
 
-#include "App.h"
+#include "../include/Graphly/App.h"
 
 using namespace Graphly;
-using namespace GraphlyCore;
 using namespace GraphlyUI;
 using namespace GraphlyMath;
 

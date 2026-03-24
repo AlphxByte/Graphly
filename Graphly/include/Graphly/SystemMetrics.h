@@ -1,7 +1,7 @@
-#ifndef GRAPHLYCORE_SYSTEM_METRICS_HEADER
-#define GRAPHLYCORE_SYSTEM_METRICS_HEADER
+#ifndef GRAPHLY_SYSTEM_METRICS_HEADER
+#define GRAPHLY_SYSTEM_METRICS_HEADER
 
-namespace GraphlyCore
+namespace Graphly
 {
 	class SystemMetrics final
 	{
@@ -19,4 +19,4 @@ namespace GraphlyCore
 	};
 }
 
-#endif // GRAPHLYCORE_SYSTEM_METRICS_HEADER
+#endif // GRAPHLY_SYSTEM_METRICS_HEADER

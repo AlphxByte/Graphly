@@ -1,6 +1,5 @@
 #include "WindowImpl.h"
 
-using namespace GraphlyCore;
 using namespace GraphlyMath;
 using namespace GraphlyUI;
 

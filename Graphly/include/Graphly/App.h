@@ -2,7 +2,9 @@
 #define GRAPHLY_APP_HEADER
 
 #include "GraphlyWindow.h"
-#include "GraphlyCore/GraphlyCore.h"
+#include "Logger.h"
+#include "MemoryTracker.h"
+#include "SystemMetrics.h"
 
 #include <optional>
 #include <memory>
@@ -42,10 +44,10 @@ namespace Graphly
 		// Members section
 		AppSettings _settings{};
 		static HANDLE _mutex;
-
-		// GraphlyCore Members
-		GraphlyCore::MemoryTrackerPtr _memoryTracker{};
-		GraphlyCore::LoggerPtr _logger{};
+		
+		// Components
+		MemoryTrackerPtr _memoryTracker{};
+		LoggerPtr _logger{};
 
 		// GraphlyUI Members
 		GraphlyWindowPtr _window{};

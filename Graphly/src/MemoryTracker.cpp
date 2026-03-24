@@ -1,6 +1,6 @@
-#include "../include/GraphlyCore/MemoryTracker.h"
+#include "../include/Graphly/MemoryTracker.h"
 
-using namespace GraphlyCore;
+using namespace Graphly;
 
 MemoryTracker::MemoryTracker()
 {

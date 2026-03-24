@@ -26,17 +26,14 @@ file along with the application logic.
 > The App class right now doesn't contain the application logic yet, only
 initializing core components of the application.
 
-2. **GraphlyCore**
-a static library containing the shared components across multiple projects.
-
-3. **GraphlyDB**
+2. **GraphlyDB**
 > No description provided for **GraphlyDB** yet as this project is empty. 
 This project is intended for providing future database support for the application.
 
-4. **GraphlyMath**
+3. **GraphlyMath**
 a thin wrapper over DirectXMath library that provides basic math features. 
 
-5. **GraphlyUI** 
+4. **GraphlyUI** 
 Provides a UI system and a UI renderer and predefined controls for the application.
 
 ## How it works

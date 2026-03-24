@@ -3,7 +3,6 @@
 
 #include "../include/GraphlyUI/Window.h"
 #include "UIContext.h"
-#include "GraphlyCore/Logger.h"
 
 namespace GraphlyUI
 {

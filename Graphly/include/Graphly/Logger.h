@@ -5,7 +5,7 @@
 #include <fstream>
 #include <optional>
 
-namespace GraphlyCore
+namespace Graphly
 {
 	enum class MessageType
 	{

@@ -1,8 +1,8 @@
-#include "../include/GraphlyCore/Logger.h"
+#include "../include/Graphly/Logger.h"
 
 #include <windows.h>
 
-using namespace GraphlyCore;
+using namespace Graphly;
 
 Logger::Logger(const LoggerSettings& settings)
 : _settings(settings)

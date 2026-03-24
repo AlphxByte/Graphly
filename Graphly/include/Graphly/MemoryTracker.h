@@ -7,7 +7,7 @@
 
 #include <memory>
 
-namespace GraphlyCore
+namespace Graphly
 {
 	class MemoryTracker final
 	{

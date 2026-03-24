@@ -2,14 +2,14 @@
 #define GRAPHLY_GRAPHLYWINDOW_HEADER
 
 #include "GraphlyUI/Window.h"
-#include "GraphlyCore/Logger.h"
+#include "Logger.h"
 
 namespace Graphly
 {
 	class GraphlyWindow : public GraphlyUI::Window
 	{
 	public:
-		GraphlyWindow(GraphlyCore::Logger* logger, const GraphlyUI::WindowSettings& settings);
+		GraphlyWindow(Logger* logger, const GraphlyUI::WindowSettings& settings);
 		GraphlyWindow(const GraphlyWindow& other) = delete;
 		GraphlyWindow(GraphlyWindow&& other) = delete;
 		~GraphlyWindow() = default;
@@ -18,7 +18,7 @@ namespace Graphly
 		GraphlyWindow& operator = (GraphlyWindow&& other) = delete;
 
 	private:
-		GraphlyCore::Logger* _logger;
+		Logger* _logger;
 	};
 
 	using GraphlyWindowPtr       = std::unique_ptr<GraphlyWindow>;

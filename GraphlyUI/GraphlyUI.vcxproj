@@ -45,9 +45,6 @@
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GraphlyCore\GraphlyCore.vcxproj">
-      <Project>{b4451793-0ea7-41fe-bb2d-b388f0092090}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\GraphlyMath\GraphlyMath.vcxproj">
       <Project>{3e609121-c733-4df7-a0c0-257b31a382ea}</Project>
     </ProjectReference>
@@ -145,7 +142,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\GraphlyMath\include;$(ProjectDir)..\GraphlyCore\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\GraphlyMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp23</LanguageStandard>
     </ClCompile>
     <Link>
@@ -167,7 +164,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\GraphlyMath\include;$(ProjectDir)..\GraphlyCore\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\GraphlyMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp23</LanguageStandard>
     </ClCompile>
     <Link>
