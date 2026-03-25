@@ -130,12 +130,12 @@ UIElement
 └── Children 
 ```
 
-2.1 **Parent** is a node from the ui tree of type UIElement that holds a pointer 
-to the parent of the current ui element. If the current node is the root of 
-the tree then this pointer is null.<br>
+	1. **Parent** is a node from the ui tree of type UIElement that holds a pointer 
+	to the parent of the current ui element. If the current node is the root of 
+	the tree then this pointer is null.<br>
 
-2.2 **Children** is a **std::unordered_map** that holds as the key the name of a child
-ui element and the pointer to that element.<br>
+	2. **Children** is a **std::unordered_map** that holds as the key the name of a child
+	ui element and the pointer to that element.<br>
 
 3. **WindowSettings** is a component that is used to initialize the **Window**
 component and handle the lifetime of the window resources such as win32 handles
