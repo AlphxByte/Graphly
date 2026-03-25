@@ -47,7 +47,7 @@ Graphly (namespace)
 ├── App
 │	 ├── GraphlyWindow
 │	 ├── Logger
-|	 └── MemoryTracker
+│	 └── MemoryTracker
 └── SystemMetrics
 ```
 
@@ -111,7 +111,7 @@ Every node from the ui element has the following structure:<br>
 
 ```txt
 UIElement
-├── UIFactory (raw pointer to the **UIFactory** component from **UIContext**)
+├── UIFactory (raw pointer to the UIFactory component from UIContext)
 ├── Parent
 └── Children 
 ```
