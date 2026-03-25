@@ -88,8 +88,8 @@ Features provided by **GraphlyMath**:<br>
 3. **Vector** is a SIMD-optimized version of **FloatN** used to store float values up to 4 
 floats inside a **Vector** object.
 > [!TIP]
-> Use **Vector** object for optimized calculations with groups of 2, 3 or 4 float values 
-> and use FloatN for general purpose calculations with higher number of floats.
+> Use **Vector** object for vector optimized calculations with dimensions of 2, 3 or 4
+> and use FloatN for general purpose calculations with higher number of dimensions.
 4. **Matrix4x4** is a SIMD-optimized matrix with 4x4 dimensions. Every line of the matrix
 is of type **Vector**.
 > [!TIP]
@@ -130,11 +130,11 @@ UIElement
 └── Children 
 ```
 
-**Parent** is a node from the ui tree of type UIElement that holds a pointer 
+2.1 **Parent** is a node from the ui tree of type UIElement that holds a pointer 
 to the parent of the current ui element. If the current node is the root of 
 the tree then this pointer is null.<br>
 
-**Children** is a **std::unordered_map** that holds as the key the name of a child
+2.2 **Children** is a **std::unordered_map** that holds as the key the name of a child
 ui element and the pointer to that element.<br>
 
 3. **WindowSettings** is a component that is used to initialize the **Window**
