@@ -55,6 +55,8 @@ Graphly (namespace)
 └── SystemMetrics
 ```
 
+---
+
 1. **App** is the main component for the **Graphly** project that will initialize
 the application and created the subcomponents from the diagram above.
 > [!NOTE]
@@ -102,10 +104,14 @@ This function is used to run the application and returns the exit code of the ap
 > [!NOTE]
 > The Run function is used right now only to run the window of the application.
 
+---
+
 2. **GraphlyWindow** is a child class of the **Window** class from the **GraphlyUI** project
 that will handle the application specific logic for the main window.
 > [!NOTE]
 > **GraphlyWindow** component might be changed in the future to **GraphlyMainWindow**.<br>
+
+---
 
 3. **Logger** component is used for writing messages inside a log file or writing 
 a message using a popup window. This component has 3 message types: Information, Warning and Error. 
@@ -141,13 +147,15 @@ Used to write popup message.
 > Use this function when the message is important to the user and use **WriteLogMessage** function
 > for more detailed messages.
 
+---
+
 4. **MemoryTracker** for detecting memory leaks and unreleased resources for the **App** component.
 > [!IMPORTANT]
 > An issue was found where if an error was thrown by the **App** class 
-it will show in the output window as a memory leak. This is because std::runtime_error 
-allocates a string that was given, and that string lasts longer than the **App** class 
-because it needs to beused in the catch block inside `Graphly\src\main.cpp`. 
-After the catch block ends, the string is deallocated.
+> it will show in the output window as a memory leak. This is because std::runtime_error 
+> allocates a string that was given, and that string lasts longer than the **App** class 
+> because it needs to beused in the catch block inside `Graphly\src\main.cpp`. 
+> After the catch block ends, the string is deallocated.<br>
 > [!NOTE]
 > This component is only used in **DEBUG** mode.
 
@@ -186,6 +194,8 @@ GraphlyUI (namespace)
 	└── WindowSettings
 ```
 
+---
+
 1. **Window** component is a general window class that provides basic window
 functionality for a window.<br>
 
@@ -195,6 +205,8 @@ functionality for a window.<br>
 [[nodiscard]] int Run();
 ```
 This function is used to run the event loop for the window.
+
+---
 
 2. **UIContext** is a subcomponent of the **Window** class that holds all the
 resources of the ui system including the rendering resources and the ui tree of controls.
@@ -215,6 +227,8 @@ UIElement
 
 - **Children** is a **std::unordered_map** that holds as the key the name of a child
 	   ui element and the pointer to that element.<br>
+
+---
 
 3. **UIElement** is a abstract class that represents a generic ui element on a window.
 **GraphlyUI** also provides predefined ui elements such as: TextField, Button and Image.
@@ -244,6 +258,8 @@ protected:
 - **text** a wide string that contains the text of the ui element.
 - **position** position on the window.
 - **dimension** dimension of the ui element.
+
+---
 
 4. **WindowSettings** is a component that is used to initialize the **Window**
 component and handle the lifetime of the window resources such as win32 handles
