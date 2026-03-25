@@ -61,15 +61,55 @@ the application and created the subcomponents from the diagram above.
 > **App** component is only initializing the subcomponents and doesn't provide
 the application logic yet.<br>
 
+#### App functions
+
+```cpp
+static LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
+```
+This function is used to handle window events, where:
+- **hwnd** is the handle of the window.
+- **message** is the message sent by the event loop.
+- **wParam** and **lParam** contain additional information about the message sent.
+
+```cpp
+static bool AlreadyRunning();
+```
+Used for checking if the app is already opened. Returns true if it is already opened and false
+otherwise.
+
+```cpp
+[[nodiscard]] int Run();
+```
+This functions is used to run the application and returns the exit code of the app. 
+> [!NOTE]
+> The Run function is used right now only to run the window.
+
 2. **GraphlyWindow** is a child class of the **Window** class from the **GraphlyUI** project
 that will handle the application specific logic for the main window.
 > [!NOTE]
 > **GraphlyWindow** component might be changed in the future to **GraphlyMainWindow**.<br>
 
 3. **Logger** component is used for writing messages inside a log file or writing 
-a message using a popup window.This component has 3 message types: Information, Warning and Error. 
+a message using a popup window. This component has 3 message types: Information, Warning and Error. 
 If the Logger component doesn't get a file path to a log file to create it; it 
 will be created based on the CurrentDir environment variable.<br>
+
+#### Logger functions
+
+```cpp
+void WriteLogMessage(const Message& msg);
+void WriteLogMessage(Message&& msg);
+```
+Used to write log messages to the app log file.
+
+```cpp
+void WritePopupMessage(const Message& msg);
+void WritePopupMessage(Message&& msg);
+```
+Used to write popup message.
+> [!TIP]
+> Use this function when the message is important to the user and use **WriteLogMessage** function
+> for more detailed messages.
 
 4. **MemoryTracker** for detecting memory leaks and unreleased resources for the **App** component.
 > [!IMPORTANT]
@@ -130,11 +170,11 @@ UIElement
 └── Children 
 ```
 
-   2.1. **Parent** is a node from the ui tree of type UIElement that holds a pointer 
+- **Parent** is a node from the ui tree of type UIElement that holds a pointer 
 	   to the parent of the current ui element. If the current node is the root of 
 	   the tree then this pointer is null.<br>
 
-   2.2. **Children** is a **std::unordered_map** that holds as the key the name of a child
+- **Children** is a **std::unordered_map** that holds as the key the name of a child
 	   ui element and the pointer to that element.<br>
 
 3. **UIElement** is a abstract class that represents a generic ui element on a window.
