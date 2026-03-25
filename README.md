@@ -7,7 +7,8 @@ graph-based diagrams for your project architecture,
 allowing you to visualize structure and relationships between
 different components of your system or application. 
 
-> Note: This is project is still in development. 
+> [!NOTE]
+> This is project is still in development. 
 
 ## Dependencies
 1. Win32 (used mainly for creating the application window)
@@ -15,7 +16,8 @@ different components of your system or application.
 3. Direct2D and Direct3D 11 (rendering ui elements)
 4. DXGI
 
-> Note: The project doesn't link DirectX libraries in the linker options yet, and those
+> [!NOTE]
+> The project doesn't link DirectX libraries in the linker options yet, and those
 libraries will be linked and used by the project in the next release.
 
 ## Project Structure
@@ -23,11 +25,13 @@ libraries will be linked and used by the project in the next release.
 the main project of Graphly, where you will find the entry point of the application 
 and `main.cpp` file inside `Graphly\src` folder along with the application logic.
 
-> Note: The App class right now doesn't contain the application logic yet, only
+> [!NOTE]
+> The App class right now doesn't contain the application logic yet, only
 initializing core components of the application.
 
 2. **GraphlyDB**
-> Note: No description provided for **GraphlyDB** yet as this project is empty. 
+> ![NOTE]
+> No description provided for **GraphlyDB** yet as this project is empty. 
 This project is intended for providing future database support for the application.
 
 3. **GraphlyMath**
@@ -53,12 +57,14 @@ Graphly (namespace)
 
 1. **App** is the main component for the **Graphly** project that will initialize
 the application and created the subcomponents from the diagram above.
-> Note: **App** component is only initializing the subcomponents and doesn't provide
+> [!NOTE]
+> **App** component is only initializing the subcomponents and doesn't provide
 the application logic yet.<br>
 
 2. **GraphlyWindow** is a child class of the **Window** class from the **GraphlyUI** project
 that will handle the application specific logic for the main window.
-> Note: **GraphlyWindow** component might be changed in the future to **GraphlyMainWindow**.<br>
+> ![NOTE]
+> **GraphlyWindow** component might be changed in the future to **GraphlyMainWindow**.<br>
 
 3. **Logger** component is used for writing messages inside a log file or writing 
 a message using a popup window.This component has 3 message types: Information, Warning and Error. 
@@ -66,6 +72,7 @@ If the Logger component doesn't get a file path to a log file to create it; it
 will be created based on the CurrentDir environment variable.<br>
 
 4. **MemoryTracker** for detecting memory leaks and unreleased resources for the **App** component.
+> [!IMPORTANT]
 > An issue was found where if an error was thrown by the **App** class 
 it will show in the output window as a memory leak. This is because std::runtime_error 
 allocates a string that was given, and that string lasts longer than the **App** class 
@@ -80,13 +87,20 @@ Features provided by **GraphlyMath**:<br>
 2. **FloatNxM** a matrix of floats.
 3. **Vector** is a SIMD-optimized version of **FloatN** used to store float values up to 4 
 floats inside a **Vector** object.
+> [!TIP]
+> Use **Vector** object for optimized calculations with groups of 2, 3 or 4 float values 
+> and use FloatN for general purpose calculations with higher number of floats.
 4. **Matrix4x4** is a SIMD-optimized matrix with 4x4 dimensions. Every line of the matrix
 is of type **Vector**.
+> [!TIP]
+> Use **Matrix4x4** object for optimized calculations with matrices of 4x4 dimension
+> and use FloatNxM for general purpose calculations with matrices.
 
 ### UI System
 **GraphlyUI** project is a DLL that is used by the **App** component to initialize the UI System
 of the **GraphlyWindow**. Below is a description of the entire UI System.
-> Note: This system is subject to change and the diagram below will change in a future
+> [!NOTE]
+> This system is subject to change and the diagram below will change in a future
 update as this system will provide a way to render ui controls on a window.<br>
 
 ```txt

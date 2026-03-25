@@ -524,6 +524,11 @@ const std::wstring& WindowSettings::GetTitle() const
 	return title;
 }
 
+const std::wstring& WindowSettings::GetWindowClassName() const
+{
+	return className;
+}
+
 const WindowIcon& WindowSettings::GetWindowIcon() const
 {
 	return icon;
