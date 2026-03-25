@@ -42,12 +42,14 @@ Provides a UI system and a UI renderer and predefined controls for the applicati
 The application logic is handled by the App and GraphlyWindow classes. 
 Below there is a diagram showing the structure of **Graphly** project:<br>
 
-Graphly (namespace) <br>
-├── App <br>
-│	 ├── GraphlyWindow <br>
-│	 ├── Logger <br>
-|	 └── MemoryTracker <br>
-└── SystemMetrics <br>
+```txt
+Graphly (namespace)
+├── App
+│	 ├── GraphlyWindow
+│	 ├── Logger
+|	 └── MemoryTracker
+└── SystemMetrics
+```
 
 1. **App** is the main component for the **Graphly** project that will initialize
 the application and created the subcomponents from the diagram above.
@@ -87,14 +89,16 @@ of the **GraphlyWindow**. Below is a description of the entire UI System.
 > Note: This system is subject to change and the diagram below will change in a future
 update as this system will provide a way to render ui controls on a window.<br>
 
-GraphlyUI (namespace) <br>
-└── Window <br>
-	├── UIContext <br>
-	│	├── UIFactory <br>
-	│	├── UIRenderer (not included inside UIContext as a subcomponent yet)  <br>	
-	│	└── UIElement (root of the UI System) <br>
-	├── WindowFlags <br>
-	└── WindowSettings <br>
+```txt
+GraphlyUI (namespace)
+└── Window
+	├── UIContext 
+	│	├── UIFactory 
+	│	├── UIRenderer (not included inside UIContext as a subcomponent yet)
+	│	└── UIElement (root of the UI System)
+	├── WindowFlags
+	└── WindowSettings
+```
 
 1. **Window** component is a general window class that provides basic window
 functionality for a window.<br>
@@ -105,10 +109,12 @@ This component is also responsible for the creation of the root ui element that 
 size of the window where all the ui elements will be placed. 
 Every node from the ui element has the following structure:<br>
 
-UIElement <br>
-├── UIFactory (raw pointer to the **UIFactory** component from **UIContext**) <br>
-├── Parent <br>
-└── Children <br>
+```txt
+UIElement
+├── UIFactory (raw pointer to the **UIFactory** component from **UIContext**)
+├── Parent
+└── Children 
+```
 
 **Parent** is a node from the ui tree of type UIElement that holds a pointer 
 to the parent of the current ui element. If the current node is the root of 
