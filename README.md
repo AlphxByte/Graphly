@@ -61,6 +61,24 @@ the application and created the subcomponents from the diagram above.
 > **App** component is only initializing the subcomponents and doesn't provide
 the application logic yet.<br>
 
+#### App settings
+
+```cpp
+struct AppSettings final
+{
+	HINSTANCE instance{};
+	int nCmdShow{};
+	std::optional<std::string> logFilePath{};
+};
+```
+
+- **instance** is the handle to the currrent instance of the application.
+- **nCmdShow** is the show flag given by the main function to tell the window how to 
+show the window on screen.
+- **logFilePath** a path to where the log file of the app should be created.
+> [!NOTE]
+> If no path is given then the path is: CurrentDir\GraphlyLogs.txt
+
 #### App functions
 
 ```cpp
@@ -80,9 +98,9 @@ otherwise.
 ```cpp
 [[nodiscard]] int Run();
 ```
-This functions is used to run the application and returns the exit code of the app. 
+This function is used to run the application and returns the exit code of the app. 
 > [!NOTE]
-> The Run function is used right now only to run the window.
+> The Run function is used right now only to run the window of the application.
 
 2. **GraphlyWindow** is a child class of the **Window** class from the **GraphlyUI** project
 that will handle the application specific logic for the main window.
@@ -93,6 +111,18 @@ that will handle the application specific logic for the main window.
 a message using a popup window. This component has 3 message types: Information, Warning and Error. 
 If the Logger component doesn't get a file path to a log file to create it; it 
 will be created based on the CurrentDir environment variable.<br>
+
+#### Logger settings
+
+```cpp
+using LogPath = std::optional<std::string>;
+
+struct LoggerSettings final
+{
+	LogPath logPath;
+};
+```
+- logPath is the file path given from the App component.
 
 #### Logger functions
 
@@ -118,6 +148,8 @@ it will show in the output window as a memory leak. This is because std::runtime
 allocates a string that was given, and that string lasts longer than the **App** class 
 because it needs to beused in the catch block inside `Graphly\src\main.cpp`. 
 After the catch block ends, the string is deallocated.
+> [!NOTE]
+> This component is only used in **DEBUG** mode.
 
 ### Math library
 **GraphlyMath** project is a DLL that is used across the project for math-related calculations.
@@ -157,6 +189,13 @@ GraphlyUI (namespace)
 1. **Window** component is a general window class that provides basic window
 functionality for a window.<br>
 
+#### Window Functions
+
+```cpp
+[[nodiscard]] int Run();
+```
+This function is used to run the event loop for the window.
+
 2. **UIContext** is a subcomponent of the **Window** class that holds all the
 resources of the ui system including the rendering resources and the ui tree of controls.
 This component is also responsible for the creation of the root ui element that has the rect 
@@ -184,15 +223,32 @@ When a generic UIElement object is created the assigned type to the element is T
 **UIElement** class has the following fields that you can set:<br>
 
 ```cpp
-UIElement* parent{};
-std::wstring text{};
-GraphlyMath::Vector2 position{ 0, 0 };
-GraphlyMath::Vector2 dimension{ 50, 50 };
+struct GRAPHLYUI_API UIElementSettings
+{
+	UIElement* parent{};
+	std::wstring text{};
+	GraphlyMath::Vector2 position{ 0, 0 };
+	GraphlyMath::Vector2 dimension{ 50, 50 };
+
+protected:
+	UIElementType type = UIElementType::TextField;
+
+	UIElementSettings(UIElementType type = UIElementType::TextField)
+	: type(type) {}
+
+	friend class UIElement;
+};
 ```
+
+- **parent** a pointer to the parent element.
+- **text** a wide string that contains the text of the ui element.
+- **position** position on the window.
+- **dimension** dimension of the ui element.
 
 4. **WindowSettings** is a component that is used to initialize the **Window**
 component and handle the lifetime of the window resources such as win32 handles
-to icons, cursor and other **gdi+** resources.
+to icons, cursor and other **gdi+** resources. See `GraphlyUI\GraphlyUI\Window\WindowSettings.h`
+to see what settings can be changed for a window.
 
 ## Setup
 1. Visual Studio 2022.
