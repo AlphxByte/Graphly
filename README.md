@@ -30,7 +30,7 @@ and `main.cpp` file inside `Graphly\src` folder along with the application logic
 initializing core components of the application.
 
 2. **GraphlyDB**
-> ![NOTE]
+> [!NOTE]
 > No description provided for **GraphlyDB** yet as this project is empty. 
 This project is intended for providing future database support for the application.
 
@@ -63,7 +63,7 @@ the application logic yet.<br>
 
 2. **GraphlyWindow** is a child class of the **Window** class from the **GraphlyUI** project
 that will handle the application specific logic for the main window.
-> ![NOTE]
+> [!NOTE]
 > **GraphlyWindow** component might be changed in the future to **GraphlyMainWindow**.<br>
 
 3. **Logger** component is used for writing messages inside a log file or writing 
@@ -135,7 +135,7 @@ to the parent of the current ui element. If the current node is the root of
 the tree then this pointer is null.<br>
 
 **Children** is a **std::unordered_map** that holds as the key the name of a child
-ui element and the pointer to that element.<br>_
+ui element and the pointer to that element.<br>
 
 3. **WindowSettings** is a component that is used to initialize the **Window**
 component and handle the lifetime of the window resources such as win32 handles
