@@ -55,16 +55,14 @@ Graphly (namespace)
 └── SystemMetrics
 ```
 
----
-
-1. **App** is the main component for the **Graphly** project that will initialize
+#### App component
+**App** is the main component for the **Graphly** project that will initialize
 the application and created the subcomponents from the diagram above.
 > [!NOTE]
 > **App** component is only initializing the subcomponents and doesn't provide
 the application logic yet.<br>
 
 #### App settings
-
 ```cpp
 struct AppSettings final
 {
@@ -82,7 +80,6 @@ show the window on screen.
 > If no path is given then the path is: CurrentDir\GraphlyLogs.txt
 
 #### App functions
-
 ```cpp
 static LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
 ```
@@ -104,16 +101,14 @@ This function is used to run the application and returns the exit code of the ap
 > [!NOTE]
 > The Run function is used right now only to run the window of the application.
 
----
-
-2. **GraphlyWindow** is a child class of the **Window** class from the **GraphlyUI** project
+#### GraphlyWindow component
+**GraphlyWindow** is a child class of the **Window** class from the **GraphlyUI** project
 that will handle the application specific logic for the main window.
 > [!NOTE]
 > **GraphlyWindow** component might be changed in the future to **GraphlyMainWindow**.<br>
 
----
-
-3. **Logger** component is used for writing messages inside a log file or writing 
+#### Logger component
+**Logger** component is used for writing messages inside a log file or writing 
 a message using a popup window. This component has 3 message types: Information, Warning and Error. 
 If the Logger component doesn't get a file path to a log file to create it; it 
 will be created based on the CurrentDir environment variable.<br>
@@ -147,9 +142,8 @@ Used to write popup message.
 > Use this function when the message is important to the user and use **WriteLogMessage** function
 > for more detailed messages.
 
----
-
-4. **MemoryTracker** for detecting memory leaks and unreleased resources for the **App** component.
+#### MemoryTracker component
+**MemoryTracker** for detecting memory leaks and unreleased resources for the **App** component.
 > [!IMPORTANT]
 > An issue was found where if an error was thrown by the **App** class 
 > it will show in the output window as a memory leak. This is because std::runtime_error 
@@ -194,21 +188,18 @@ GraphlyUI (namespace)
 	└── WindowSettings
 ```
 
----
-
-1. **Window** component is a general window class that provides basic window
+#### Window component
+**Window** component is a general window class that provides basic window
 functionality for a window.<br>
 
 #### Window Functions
-
 ```cpp
 [[nodiscard]] int Run();
 ```
 This function is used to run the event loop for the window.
 
----
-
-2. **UIContext** is a subcomponent of the **Window** class that holds all the
+#### UIContext component
+**UIContext** is a subcomponent of the **Window** class that holds all the
 resources of the ui system including the rendering resources and the ui tree of controls.
 This component is also responsible for the creation of the root ui element that has the rect 
 size of the window where all the ui elements will be placed. 
@@ -228,9 +219,8 @@ UIElement
 - **Children** is a **std::unordered_map** that holds as the key the name of a child
 	   ui element and the pointer to that element.<br>
 
----
-
-3. **UIElement** is a abstract class that represents a generic ui element on a window.
+#### UIElement
+**UIElement** is a abstract class that represents a generic ui element on a window.
 **GraphlyUI** also provides predefined ui elements such as: TextField, Button and Image.
 When a generic UIElement object is created the assigned type to the element is TextField 
 (ui element with only text and no other functionality).
@@ -259,9 +249,8 @@ protected:
 - **position** position on the window.
 - **dimension** dimension of the ui element.
 
----
-
-4. **WindowSettings** is a component that is used to initialize the **Window**
+#### WindowSettings
+**WindowSettings** is a component that is used to initialize the **Window**
 component and handle the lifetime of the window resources such as win32 handles
 to icons, cursor and other **gdi+** resources. See `GraphlyUI\GraphlyUI\Window\WindowSettings.h`
 to see what settings can be changed for a window.
