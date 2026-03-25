@@ -1,4 +1,4 @@
-# Graphly
+﻿# Graphly
 ## Description
 This is a C++ project made for the POO course from **University of Bucharest**.
 
@@ -43,11 +43,11 @@ The application logic is handled by the App and GraphlyWindow classes.
 Below there is a diagram showing the structure of **Graphly** project:<br>
 
 Graphly (namespace)
-??? App
-?	 ??? GraphlyWindow
-?	 ??? Logger
-|	 ??? MemoryTracker
-??? SystemMetrics
+├── App
+│	 ├── GraphlyWindow
+│	 ├── Logger
+|	 └── MemoryTracker
+└── SystemMetrics
 
 1. **App** is the main component for the **Graphly** project that will initialize
 the application and created the subcomponents from the diagram above.
@@ -88,13 +88,13 @@ of the **GraphlyWindow**. Below is a description of the entire UI System.
 update as this system will provide a way to render ui controls on a window.<br>
 
 GraphlyUI (namespace)
-??? Window
-	??? UIContext
-	?	??? UIFactory
-	?	??? UIRenderer (not included inside UIContext as a subcomponent yet)		
-	?	??? UIElement (root of the UI System)
-	??? WindowFlags
-	??? WindowSettings
+└── Window
+	├── UIContext
+	│	├── UIFactory
+	│	├── UIRenderer (not included inside UIContext as a subcomponent yet)		
+	│	└── UIElement (root of the UI System)
+	├── WindowFlags
+	└── WindowSettings
 
 1. **Window** component is a general window class that provides basic window
 functionality for a window.<br>
@@ -106,9 +106,9 @@ size of the window where all the ui elements will be placed.
 Every node from the ui element has the following structure:<br>
 
 UIElement
-??? UIFactory (raw pointer to the **UIFactory** component from **UIContext**)
-??? Parent 
-??? Children
+├── UIFactory (raw pointer to the **UIFactory** component from **UIContext**)
+├── Parent 
+└── Children
 
 **Parent** is a node from the ui tree of type UIElement that holds a pointer 
 to the parent of the current ui element. If the current node is the root of 
