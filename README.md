@@ -7,7 +7,7 @@ graph-based diagrams for your project architecture,
 allowing you to visualize structure and relationships between
 different components of your system or application. 
 
-> This is project is still in development. 
+> Note: This is project is still in development. 
 
 ## Dependencies
 1. Win32 (used mainly for creating the application window)
@@ -15,7 +15,7 @@ different components of your system or application.
 3. Direct2D and Direct3D 11 (rendering ui elements)
 4. DXGI
 
-> The project doesn't link DirectX libraries in the linker options yet, and those
+> Note: The project doesn't link DirectX libraries in the linker options yet, and those
 libraries will be linked and used by the project in the next release.
 
 ## Project Structure
@@ -23,11 +23,11 @@ libraries will be linked and used by the project in the next release.
 the main project of Graphly, where you will find the entry point of the application 
 and `main.cpp` file inside `Graphly\src` folder along with the application logic.
 
-> The App class right now doesn't contain the application logic yet, only
+> Note: The App class right now doesn't contain the application logic yet, only
 initializing core components of the application.
 
 2. **GraphlyDB**
-> No description provided for **GraphlyDB** yet as this project is empty. 
+> Note: No description provided for **GraphlyDB** yet as this project is empty. 
 This project is intended for providing future database support for the application.
 
 3. **GraphlyMath**
@@ -40,25 +40,38 @@ Provides a UI system and a UI renderer and predefined controls for the applicati
 
 ### Application logic
 The application logic is handled by the App and GraphlyWindow classes. 
-The App class has 3 main components:
+Below there is a diagram showing the structure of **Graphly** project:<br>
 
-1. **MemoryTracker** for detecting memory leaks and unreleased resources.
-> An issue was found where if an error was thrown by the **App** class it will show in 
-the output window inside as a memory leak. This is because std::runtime_error allocates 
-a string that was given and that string lasts longer than the **App** class because it needs to be
-used in the catch block inside `Graphly\src\main.cpp`. After the catch block ends, the string is deallocated.
+Graphly (namespace)
+??? App
+?	 ??? GraphlyWindow
+?	 ??? Logger
+|	 ??? MemoryTracker
+??? SystemMetrics
 
-2. **Logger** component is used for writing messages inside a log file or writing a message using a popup window.
-This component has 3 message types: Information, Warning and Error. If the Logger component 
-doesn't get a file path to a log file to create it; it will be created based on the CurrentDir
-environment variable.
+1. **App** is the main component for the **Graphly** project that will initialize
+the application and created the subcomponents from the diagram above.
+> Note: **App** component is only initializing the subcomponents and doesn't provide
+the application logic yet.<br>
 
-3. **GraphlyWindow** a subclass of **Window** class from the **GraphlyUI** project. This 
-component is meant to represent the main window of the application.
-> This class is currently empty and doesn't have logic yet.
+2. **GraphlyWindow** is a child class of the **Window** class from the **GraphlyUI** project
+that will handle the application specific logic for the main window.
+> Note: **GraphlyWindow** component might be changed in the future to **GraphlyMainWindow**.<br>
+
+3. **Logger** component is used for writing messages inside a log file or writing 
+a message using a popup window.This component has 3 message types: Information, Warning and Error. 
+If the Logger component doesn't get a file path to a log file to create it; it 
+will be created based on the CurrentDir environment variable.<br>
+
+4. **MemoryTracker** for detecting memory leaks and unreleased resources for the **App** component.
+> An issue was found where if an error was thrown by the **App** class 
+it will show in the output window as a memory leak. This is because std::runtime_error 
+allocates a string that was given, and that string lasts longer than the **App** class 
+because it needs to beused in the catch block inside `Graphly\src\main.cpp`. 
+After the catch block ends, the string is deallocated.
 
 ### Math library
-**GraphlyMath** project is a dll that is used across the project for math-related calculations.
+**GraphlyMath** project is a DLL that is used across the project for math-related calculations.
 Features provided by **GraphlyMath**:<br>
 
 1. **FloatN** is an array of floats used mainly for storing float values together.
@@ -69,26 +82,44 @@ floats inside a **Vector** object.
 is of type **Vector**.
 
 ### UI System
-1. **GraphlyUI** project is a dll that is used by the App component to initialize the UI System
-of the **GraphlyWindow**. Below is a description of the entire UI System.<br>
+**GraphlyUI** project is a DLL that is used by the **App** component to initialize the UI System
+of the **GraphlyWindow**. Below is a description of the entire UI System.
+> Note: This system is subject to change and the diagram below will change in a future
+update as this system will provide a way to render ui controls on a window.<br>
 
-- Window
-	- UIContext
-		- UIFactory
-		- UIElement (root of the ui tree)
-		- UIRenderer 
+GraphlyUI (namespace)
+??? Window
+	??? UIContext
+	?	??? UIFactory
+	?	??? UIRenderer (not included inside UIContext as a subcomponent yet)		
+	?	??? UIElement (root of the UI System)
+	??? WindowFlags
+	??? WindowSettings
 
-- **UIContext** component is the root component for all the UI subcomponents.
-- **UIFactory** component is used for creating generic **UIElement** objects.
-- **UIRenderer** 
-> This component is work in progress.
+1. **Window** component is a general window class that provides basic window
+functionality for a window.<br>
 
-**GraphlyUI** also provides predefined ui elements of type: TextField, Button, Image.
-> Those ui elements don't have an implementation yet.
+2. **UIContext** is a subcomponent of the **Window** class that holds all the
+resources of the ui system including the rendering resources and the ui tree of controls.
+This component is also responsible for the creation of the root ui element that has the rect 
+size of the window where all the ui elements will be placed. 
+Every node from the ui element has the following structure:<br>
 
-2. **UIElement** is an abstract class that provides a base for ui elements. Every ui element
-holds a collection of child ui elements and every ui element holds a pointer to its parent
-(root element has the parent pointer set to null).
+UIElement
+??? UIFactory (raw pointer to the **UIFactory** component from **UIContext**)
+??? Parent 
+??? Children
+
+**Parent** is a node from the ui tree of type UIElement that holds a pointer 
+to the parent of the current ui element. If the current node is the root of 
+the tree then this pointer is null.<br>
+
+**Children** is a **std::unordered_map** that holds as the key the name of a child
+ui element and the pointer to that element.<br>_
+
+3. **WindowSettings** is a component that is used to initialize the **Window**
+component and handle the lifetime of the window resources such as win32 handles
+to icons, cursor and other **gdi+** resources.
 
 ## Setup
 1. Visual Studio 2022.
