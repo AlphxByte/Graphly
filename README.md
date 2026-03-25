@@ -130,14 +130,27 @@ UIElement
 └── Children 
 ```
 
-- **Parent** is a node from the ui tree of type UIElement that holds a pointer 
-to the parent of the current ui element. If the current node is the root of 
-the tree then this pointer is null.<br>
+   2.1. **Parent** is a node from the ui tree of type UIElement that holds a pointer 
+	   to the parent of the current ui element. If the current node is the root of 
+	   the tree then this pointer is null.<br>
 
-- **Children** is a **std::unordered_map** that holds as the key the name of a child
-ui element and the pointer to that element.<br>
+   2.2. **Children** is a **std::unordered_map** that holds as the key the name of a child
+	   ui element and the pointer to that element.<br>
 
-3. **WindowSettings** is a component that is used to initialize the **Window**
+3. **UIElement** is a abstract class that represents a generic ui element on a window.
+**GraphlyUI** also provides predefined ui elements such as: TextField, Button and Image.
+When a generic UIElement object is created the assigned type to the element is TextField 
+(ui element with only text and no other functionality).
+**UIElement** class has the following fields that you can set:<br>
+
+```cpp
+UIElement* parent{};
+std::wstring text{};
+GraphlyMath::Vector2 position{ 0, 0 };
+GraphlyMath::Vector2 dimension{ 50, 50 };
+```
+
+4. **WindowSettings** is a component that is used to initialize the **Window**
 component and handle the lifetime of the window resources such as win32 handles
 to icons, cursor and other **gdi+** resources.
 
@@ -146,10 +159,10 @@ to icons, cursor and other **gdi+** resources.
 2. C++ Desktop Development.
 
 ## How to Build
-1. Open `Graphly.sln` in Visual Studio.
-2. Select Debug or Release.
+1. Open `Graphly.sln` in **Visual Studio**.
+2. Select **Debug** or **Release**.
 3. Build Solution.
 
 ## How to Run
-1. Select **Graphly** as Startup Project.
-2. Press Run or F5.
+1. Select **Graphly** as **Startup Project**.
+2. Press **Run** or **F5**.
