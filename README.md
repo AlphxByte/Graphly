@@ -50,6 +50,7 @@ Below there is a diagram showing the structure of **Graphly** project:<br>
 Graphly (namespace)
 ├── App
 │	 ├── GraphlyWindow
+│	 │	 └── Logger (raw pointer to Logger from App)
 │	 ├── Logger
 │	 └── MemoryTracker
 └── SystemMetrics
@@ -80,6 +81,7 @@ show the window on screen.
 > If no path is given then the path is: CurrentDir\GraphlyLogs.txt
 
 ### App functions
+**WindowProcedure** function:
 ```cpp
 static LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
 ```
@@ -88,12 +90,14 @@ This function is used to handle window events, where:
 - **message** is the message sent by the event loop.
 - **wParam** and **lParam** contain additional information about the message sent.
 
+**AlreadyRunning** function:
 ```cpp
 static bool AlreadyRunning();
 ```
-Used for checking if the app is already opened. Returns true if it is already opened and false
+Used for checking if the app is already opened. Returns true if it is already opened or false
 otherwise.
 
+**Run** function
 ```cpp
 [[nodiscard]] int Run();
 ```
@@ -122,15 +126,35 @@ struct LoggerSettings final
 	LogPath logPath;
 };
 ```
-- logPath is the file path given from the App component.
+- **logPath** is the file path given from the App component.
 
 ### Logger functions
+**WriteLogMessage** functions:
 ```cpp
 void WriteLogMessage(const Message& msg);
 void WriteLogMessage(Message&& msg);
 ```
-Used to write log messages to the app log file.
+Used to write log messages to the app log file. Where Message type is:
 
+```cpp
+enum class MessageType
+{
+	Information = 0,
+	Warning,
+	Error
+};
+
+struct Message final
+{
+	MessageType type{};
+	std::string str{};
+};
+```
+
+- **type** is the type of the message.
+- **str** the string of message.
+
+**WritePopupMessage** functions:
 ```cpp
 void WritePopupMessage(const Message& msg);
 void WritePopupMessage(Message&& msg);
@@ -142,14 +166,13 @@ Used to write popup message.
 
 ### MemoryTracker component
 **MemoryTracker** for detecting memory leaks and unreleased resources for the **App** component.
+This component is only used in **DEBUG** mode.
 > [!IMPORTANT]
 > An issue was found where if an error was thrown by the **App** class 
 > it will show in the output window as a memory leak. This is because std::runtime_error 
 > allocates a string that was given, and that string lasts longer than the **App** class 
 > because it needs to beused in the catch block inside `Graphly\src\main.cpp`. 
 > After the catch block ends, the string is deallocated.<br>
-> [!NOTE]
-> This component is only used in **DEBUG** mode.
 
 ### Math library
 **GraphlyMath** project is a DLL that is used across the project for math-related calculations.
@@ -182,6 +205,7 @@ GraphlyUI (namespace)
 	│	├── UIFactory 
 	│	├── UIRenderer (not included inside UIContext as a subcomponent yet)
 	│	└── UIElement (root of the UI System)
+	│       └── UIFactory (raw pointer to UIFactory from UIContext)
 	├── WindowFlags
 	└── WindowSettings
 ```
@@ -191,6 +215,7 @@ GraphlyUI (namespace)
 functionality for a window.<br>
 
 ### Window Functions
+**Run** function:
 ```cpp
 [[nodiscard]] int Run();
 ```
@@ -205,24 +230,26 @@ Every node from the ui element has the following structure:<br>
 
 ```txt
 UIElement
-├── UIFactory (raw pointer to the UIFactory component from UIContext)
+├── UIFactory (raw pointer to the UIFactory from UIContext)
 ├── Parent
 └── Children 
 ```
 
 - **Parent** is a node from the ui tree of type UIElement that holds a pointer 
-	   to the parent of the current ui element. If the current node is the root of 
-	   the tree then this pointer is null.<br>
+to the parent of the current ui element. If the current node is the root of 
+the tree then this pointer is null.<br>
 
 - **Children** is a **std::unordered_map** that holds as the key the name of a child
-	   ui element and the pointer to that element.<br>
+ui element and the pointer to that element.<br>
 
 ### UIElement
 **UIElement** is a abstract class that represents a generic ui element on a window.
 **GraphlyUI** also provides predefined ui elements such as: TextField, Button and Image.
-When a generic UIElement object is created the assigned type to the element is TextField 
-(ui element with only text and no other functionality).
+When a ui element object derived from UIElement is created the assigned type to the 
+element is **TextField** (ui element with only text and no other functionality).
 **UIElement** class has the following fields that you can set:<br>
+> [!NOTE]
+> A object of type UIElement cannot be copied.
 
 ```cpp
 struct GRAPHLYUI_API UIElementSettings
@@ -247,11 +274,46 @@ protected:
 - **position** position on the window.
 - **dimension** dimension of the ui element.
 
+### UIElement functions
+**AddUIElement** functions:
+```cpp
+UIElement* AddUIElement(std::string_view name, const UIElementSettings& settings);
+UIElement* AddUIElement(std::string_view name, UIElementSettings&& settings);
+```
+Used to add a child element to the current ui element, where:
+- **name** is used for the unique name to identify the ui element.
+- **settings** settings for the ui element (see **UIElementSettings**).
+
+**DeleteUIElement** functions:
+```cpp
+bool DeleteUIElement(std::string_view name); (1)
+bool DeleteUIElement(UIElement* parent, std::string_view elementName); (2)
+```
+1. Used to delete a child ui element from the subtree where the root of the subtree is
+the current ui element. This function deletes recursively the subtree of the child element. 
+The return value of this function is true if the element was deleted or false otherwise.
+2. Same thing as the (1) function but allows for a faster deletion by providing the parent
+of the element. 
+> [!TIP]
+> Use function signature (2) to reduce searches of the child element in the subtree.
+
+**GetUIElement** functions:
+```cpp
+[[nodiscard]] UIElement* GetUIElement(std::string_view name); (1)
+[[nodiscard]] UIElement* GetUIElement(UIElement* parent, std::string_view elementName); (2)
+```
+1. Used to search the subtree of the current ui element for the child element with the 
+name provided. 
+2. Same thing as (1) but allows for a faster search by providing the parent of the element.
+> [!TIP]
+> Use function signature (2) to reduce searches of the child element in the subtree.
+
 ### WindowSettings
 **WindowSettings** is a component that is used to initialize the **Window**
 component and handle the lifetime of the window resources such as win32 handles
-to icons, cursor and other **gdi+** resources. See `GraphlyUI\GraphlyUI\Window\WindowSettings.h`
-to see what settings can be changed for a window.
+to icons, cursor and other **gdi+** resources. See 
+`GraphlyUI\include\GraphlyUI\Window\WindowSettings.h` to see what settings 
+can be set for a window.
 
 ## Setup
 1. Visual Studio 2022.
