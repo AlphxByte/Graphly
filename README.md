@@ -11,10 +11,10 @@ different components of your system or application.
 > This is project is still in development. 
 
 ## Dependencies
-1. Win32 (used mainly for creating the application window)
-2. DirectXMath 
-3. Direct2D and Direct3D 11 (rendering ui elements)
-4. DXGI
+1. Win32 (used mainly for creating the application window).
+2. DirectXMath.
+3. Direct2D and Direct3D 11 (rendering ui elements).
+4. DXGI.
 
 > [!NOTE]
 > The project doesn't link DirectX libraries in the linker options yet, and those
@@ -22,7 +22,7 @@ libraries will be linked and used by the project in the next release.
 
 ## Project Structure
 1. **Graphly** 
-the main project of Graphly, where you will find the entry point of the application 
+the main project of **Graphly**, where you will find the entry point of the application 
 and `main.cpp` file inside `Graphly\src` folder along with the application logic.
 
 > [!NOTE]
@@ -78,7 +78,7 @@ struct AppSettings final
 show the window on screen.
 - **logFilePath** a path to where the log file of the app should be created.
 > [!NOTE]
-> If no path is given then the path is: CurrentDir\GraphlyLogs.txt
+> If no path is given then the path is: `CurrentDir\GraphlyLogs.txt`.
 
 ### App functions
 **WindowProcedure** function:
@@ -97,7 +97,7 @@ static bool AlreadyRunning();
 Used for checking if the app is already opened. Returns true if it is already opened or false
 otherwise.
 
-**Run** function
+**Run** function:
 ```cpp
 [[nodiscard]] int Run();
 ```
@@ -114,8 +114,8 @@ that will handle the application specific logic for the main window.
 ### Logger component
 **Logger** component is used for writing messages inside a log file or writing 
 a message using a popup window. This component has 3 message types: Information, Warning and Error. 
-If the Logger component doesn't get a file path to a log file to create it; it 
-will be created based on the CurrentDir environment variable.<br>
+If the **Logger** component doesn't get a file path to a log file to create it; it 
+will be created based on the **ProjectDir** environment variable.<br>
 
 ### Logger settings
 ```cpp
@@ -126,7 +126,7 @@ struct LoggerSettings final
 	LogPath logPath;
 };
 ```
-- **logPath** is the file path given from the App component.
+- **logPath** is the file path given from the **App** component.
 
 ### Logger functions
 **WriteLogMessage** functions:
@@ -134,7 +134,7 @@ struct LoggerSettings final
 void WriteLogMessage(const Message& msg);
 void WriteLogMessage(Message&& msg);
 ```
-Used to write log messages to the app log file. Where Message type is:
+Used to write log messages to the app log file. Where **Message** type is:
 
 ```cpp
 enum class MessageType
@@ -284,6 +284,9 @@ Used to add a child element to the current ui element, where:
 - **name** is used for the unique name to identify the ui element.
 - **settings** settings for the ui element (see **UIElementSettings**).
 
+This function returns a pointer to the added element if it was added otherwise nullptr if 
+the function failed to add the element.
+
 **DeleteUIElement** functions:
 ```cpp
 bool DeleteUIElement(std::string_view name); (1)
@@ -303,7 +306,7 @@ of the element.
 [[nodiscard]] UIElement* GetUIElement(UIElement* parent, std::string_view elementName); (2)
 ```
 1. Used to search the subtree of the current ui element for the child element with the 
-name provided. 
+name provided and returns a raw pointer if element is found otherwise it returns nullptr. 
 2. Same thing as (1) but allows for a faster search by providing the parent of the element.
 > [!TIP]
 > Use function signature (2) to reduce searches of the child element in the subtree.
