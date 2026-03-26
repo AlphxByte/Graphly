@@ -46,13 +46,13 @@ Provides a UI system and a UI renderer and predefined controls for the applicati
 The application logic is handled by the App and GraphlyWindow classes. 
 Below there is a diagram showing the structure of **Graphly** project:<br>
 
-```txt
+```md
 Graphly (namespace)
 ├── App
-│	 ├── GraphlyWindow
-│	 │	 └── Logger (raw pointer to Logger from App)
-│	 ├── Logger
-│	 └── MemoryTracker
+│	├── GraphlyWindow
+│	│	└── Logger (raw pointer to Logger from App)
+│	├── Logger
+│	└── MemoryTracker
 └── SystemMetrics
 ```
 
@@ -198,7 +198,7 @@ of the **GraphlyWindow**. Below is a description of the entire UI System.
 > This system is subject to change and the diagram below will change in a future
 update as this system will provide a way to render ui controls on a window.<br>
 
-```txt
+```md
 GraphlyUI (namespace)
 └── Window
 	├── UIContext 
@@ -228,7 +228,7 @@ This component is also responsible for the creation of the root ui element that 
 size of the window where all the ui elements will be placed. 
 Every node from the ui element has the following structure:<br>
 
-```txt
+```md
 UIElement
 ├── UIFactory (raw pointer to the UIFactory from UIContext)
 ├── Parent
