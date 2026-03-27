@@ -49,6 +49,7 @@ Below there is a diagram showing the structure of **Graphly** project:<br>
 ```md
 Graphly (namespace)
 ├── App
+│	├── AppSettings
 │	├── GraphlyWindow
 │	│	└── Logger (raw pointer to Logger from App)
 │	├── Logger
@@ -201,13 +202,19 @@ update as this system will provide a way to render ui controls on a window.<br>
 ```md
 GraphlyUI (namespace)
 └── Window
-	├── UIContext 
-	│	├── UIFactory 
-	│	├── UIRenderer (not included inside UIContext as a subcomponent yet)
-	│	└── UIElement (root of the UI System)
-	│       └── UIFactory (raw pointer to UIFactory from UIContext)
-	├── WindowFlags
-	└── WindowSettings
+	├──	WindowSettings
+	│	├── WindowIcon
+	│	│	└── WindowIconFlags
+	│	├── WindowCursor
+	│	│	└── WindowCursorFlags
+	│	└── WindowStyle
+	│		├── WindowStyleFlags
+	│		└── WindowExStyleFlags
+	└── UIContext 
+		├── UIFactory 
+		├── UIRenderer (not included inside UIContext as a subcomponent yet)
+		└── UIElement (root of the UI System)
+	        └── UIFactory (raw pointer to UIFactory from UIContext) 
 ```
 
 ### Window component
@@ -230,6 +237,7 @@ Every node from the ui element has the following structure:<br>
 
 ```md
 UIElement
+├── UIElementSettings
 ├── UIFactory (raw pointer to the UIFactory from UIContext)
 ├── Parent
 └── Children 
@@ -314,9 +322,9 @@ name provided and returns a raw pointer if element is found otherwise it returns
 ### WindowSettings
 **WindowSettings** is a component that is used to initialize the **Window**
 component and handle the lifetime of the window resources such as win32 handles
-to icons, cursor and other **gdi+** resources. See 
-`GraphlyUI\include\GraphlyUI\Window\WindowSettings.h` to see what settings 
-can be set for a window.
+to icons, cursor and other **gdi+** resources. It also comes with predefined flags to
+set for the icon, cursor and style of the window for a fast window setup. If the user sets
+a custom icon or cursor then **WindowIconFlags** or **WindowCursorFlags** will be set to other.
 
 ## Setup
 1. Visual Studio 2022.
