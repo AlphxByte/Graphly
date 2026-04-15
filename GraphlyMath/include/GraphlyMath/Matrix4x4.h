@@ -2,23 +2,12 @@
 #define GRAPHLYMATH_MATRIX4X4_HEADER
 
 #include <DirectXMath.h>
-#include "GraphlyMathExports.h"
-
 #include "Vector.h"
+
+#include "GraphlyMathExports.h"
 
 namespace GraphlyMath
 {
-	/**********************************************************
-	* 
-	* Matrix Representation
-	* v0 
-	* v1 
-	* v2 
-	* v3 
-	* v = (x, y, z, w)
-	*
-	***********************************************************/
-
 	class alignas(16) Matrix4x4 final
 	{
 	public:
@@ -71,7 +60,7 @@ namespace GraphlyMath
 
 		~Matrix4x4() = default;
 
-		inline float Get(unsigned i, unsigned j) const noexcept
+		[[nodiscard]] inline float Get(unsigned i, unsigned j) const noexcept
 		{
 			assert(i < 4 && j < 4);
 
@@ -88,7 +77,7 @@ namespace GraphlyMath
 			}
 		}
 
-		inline DirectX::XMVECTOR GetLine(unsigned i) const noexcept
+		[[nodiscard]] inline DirectX::XMVECTOR GetLine(unsigned i) const noexcept
 		{
 			assert(i < 4);
 			return _matrix.r[i];
@@ -119,7 +108,10 @@ namespace GraphlyMath
 
 		inline Matrix4x4& operator = (Matrix4x4&& other) noexcept
 		{
-			_matrix = std::forward<DirectX::XMMATRIX>(other._matrix);
+			if (*this == other)
+				return *this;
+
+			_matrix = std::move(other._matrix);
 			return *this;
 		}
 

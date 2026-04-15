@@ -54,7 +54,7 @@ namespace GraphlyMath
 		: _data(array) {}
 
 		Float(std::array<float, N>&& array)
-		: _data(std::forward<std::array<float, N>>(array)) {}
+		: _data(std::move(array)) {}
 
 		template<typename Iterator>
 		Float(Iterator first, Iterator last)
@@ -70,7 +70,7 @@ namespace GraphlyMath
 		: _data(other._data) {}
 
 		Float(Float&& other)
-		: _data(std::forward<std::array<float, N>>(other._data)) {}
+		: _data(std::move(other._data)) {}
 
 		~Float() = default;
 
@@ -110,12 +110,18 @@ namespace GraphlyMath
 
 		Float& operator = (const Float& other)
 		{
+			if (*this == other)
+				return *this;
+
 			_data = other._data;
 			return *this;
 		}
 
 		Float& operator = (Float&& other)
 		{
+			if (*this == other)
+				return *this;
+
 			_data = std::move(other._data);
 			return *this;
 		}
@@ -307,19 +313,19 @@ namespace GraphlyMath
 		friend Float operator + (float val, const Float& f);
 		friend Float operator * (float val, const Float& f);
 
-		float& operator [] (unsigned i)
+		[[nodiscard]] float& operator [] (unsigned i)
 		{
 			assert(i < N);
 			return _data[i];
 		}
 
-		const float& operator [] (unsigned i) const
+		[[nodiscard]] const float& operator [] (unsigned i) const
 		{
 			assert(i < N);
 			return _data[i];
 		}
 
-		float Get(unsigned index)
+		[[nodiscard]] float Get(unsigned index)
 		{
 			assert(index < N);
 			return _data[index];

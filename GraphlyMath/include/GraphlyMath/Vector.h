@@ -42,7 +42,7 @@ namespace GraphlyMath
 		{}
 
 		Vector(Vector&& other) noexcept
-		: _v(std::forward<DirectX::XMVECTOR>(other._v))
+		: _v(std::move(other._v))
 		{}
 
 		~Vector() = default;
@@ -93,13 +93,19 @@ namespace GraphlyMath
 
 		inline Vector& operator = (const Vector& other) noexcept
 		{
+			if (*this == other)
+				return *this;
+
 			_v = other._v;
 			return *this;
 		}
 
 		inline Vector& operator = (Vector&& other) noexcept
 		{
-			_v = std::forward<DirectX::XMVECTOR>(other._v);
+			if (*this == other)
+				return *this;
+
+			_v = std::move(other._v);
 			return *this;
 		}
 

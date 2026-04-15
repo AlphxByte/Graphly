@@ -123,13 +123,19 @@ namespace GraphlyMath
 
 		FloatNxM& operator = (const FloatNxM& other)
 		{
+			if (*this == other)
+				return *this;
+
 			_data = other._data;
 			return *this;
 		}
 
 		FloatNxM& operator = (FloatNxM&& other)
 		{
-			_data = std::forward<std::array<std::array<float, M>, N>>(other._data);
+			if (*this == other)
+				return *this;
+
+			_data = std::move(other._data);
 			return *this;
 		}
 
@@ -292,13 +298,13 @@ namespace GraphlyMath
 		friend FloatNxM operator + (float val, const FloatNxM& f);
 		friend FloatNxM operator * (float val, const FloatNxM& f);
 
-		float Get(unsigned i, unsigned j) const
+		[[nodiscard]] float Get(unsigned i, unsigned j) const
 		{
 			assert(i < N && j < M);
 			return _data[i][j];
 		}
 
-		Float<M> GetLine(unsigned i) const
+		[[nodiscard]] Float<M> GetLine(unsigned i) const
 		{
 			assert(i < N);
 			return Float<M>(_data[i]);

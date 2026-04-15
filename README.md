@@ -1,4 +1,8 @@
-﻿# Graphly
+﻿> [!NOTE]
+> This READEME is currently outdated and it will be updated soon in a future 
+> update.
+
+# Graphly
 ## Description
 This is a C++ project made for the POO course from **University of Bucharest**.
 

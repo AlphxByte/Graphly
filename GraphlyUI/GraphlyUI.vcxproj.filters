@@ -21,66 +21,213 @@
     <ClInclude Include="include\GraphlyUI\GraphlyUIExports.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GraphlyUI\Window\Window.h">
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Window\WindowImpl.h">
+    <ClInclude Include="src\UISystem\Window\WindowImpl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Window\UIContext\UIFactory\UIFactory.h">
+    <ClInclude Include="src\UISystem\Window\UIFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GraphlyUI\Window\UIElement\UIElement.h">
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\UIElement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GraphlyUI\Window\UIElement\TextField.h">
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\Text.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GraphlyUI\Window\UIElement\Button.h">
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GraphlyUI\Window\UIElement\Image.h">
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\Image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Window\UIContext\UIContext.h">
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\WindowFlags.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GraphlyUI\Window\WindowFlags.h">
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\WindowSettings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GraphlyUI\Window\WindowSettings.h">
+    <ClInclude Include="include\GraphlyUI\UISystem\UISystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Window\UIContext\UIRenderer\UIRenderer.h">
+    <ClInclude Include="src\UISystem\WindowFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\GraphicsSystem\GraphicsSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\UISystemImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GraphlyUI\UISystem\GraphicsSystemSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\GraphicsSystem\D2DSystem\D2DSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\GraphicsSystem\TextSystem\TextSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\Window\UIElement\UIElementImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\GraphicsSystem\GraphicsDevice\Adapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\GraphicsSystem\GraphicsDevice\GraphicsDevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\GraphicsSystem\GraphicsDevice\D3DDevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\GraphicsSystem\GraphicsDevice\DXGIFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\GraphicsSystem\GraphicsDevice\DXGIDevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\GraphicsSystem\SwapChain\SwapChain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\GraphicsSystem\D2DSystem\D2DFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\GraphicsSystem\D2DSystem\D2DDevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\GraphicsSystem\SwapChain\RenderTarget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\GraphicsSystem\TextSystem\WriteFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\GraphicsSystem\D2DSystem\SolidColorBrush.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\TextLayoutSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\TextFormatSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\Window\UIContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\GraphicsSystem\TextSystem\TextFormat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\Window\UIElement\TextImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\Rectangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\Window\UIElement\RectangleImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\UIRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\Window\UIElement\ButtonImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\EventSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\UIEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\WindowEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UISystem\UISystemEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Window\Window.cpp">
+    <ClCompile Include="src\UISystem\Window\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Window\UIContext\UIFactory\UIFactory.cpp">
+    <ClCompile Include="src\UISystem\Window\UIFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Window\UIElement\UIElement.cpp">
+    <ClCompile Include="src\UISystem\Window\UIElement\UIElement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Window\UIElement\TextField.cpp">
+    <ClCompile Include="src\UISystem\Window\UIElement\Text.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Window\UIElement\Button.cpp">
+    <ClCompile Include="src\UISystem\Window\UIElement\Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Window\UIElement\Image.cpp">
+    <ClCompile Include="src\UISystem\Window\UIElement\Image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Window\UIContext\UIContext.cpp">
+    <ClCompile Include="src\UISystem\Window\WindowSettings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Window\WindowSettings.cpp">
+    <ClCompile Include="src\UISystem\UISystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Window\UIContext\UIRenderer\UIRenderer.cpp">
+    <ClCompile Include="src\UISystem\WindowFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\GraphicsSystem\GraphicsSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\GraphicsSystem\D2DSystem\D2DSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\GraphicsSystem\TextSystem\TextSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\GraphicsSystem\GraphicsDevice\Adapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\GraphicsSystem\GraphicsDevice\GraphicsDevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\GraphicsSystem\GraphicsDevice\D3DDevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\GraphicsSystem\GraphicsDevice\DXGIFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\GraphicsSystem\GraphicsDevice\DXGIDevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\GraphicsSystem\SwapChain\SwapChain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\GraphicsSystem\D2DSystem\D2DFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\GraphicsSystem\D2DSystem\D2DDevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\GraphicsSystem\SwapChain\RenderTarget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\GraphicsSystem\TextSystem\WriteFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\GraphicsSystem\D2DSystem\SolidColorBrush.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\Window\UIContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\GraphicsSystem\TextSystem\TextFormat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\Window\UIElement\Rectangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\UIRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UISystem\EventSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

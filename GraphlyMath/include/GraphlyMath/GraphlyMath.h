@@ -1,66 +1,247 @@
 #ifndef GRAPHLYMATH_HEADER
 #define GRAPHLYMATH_HEADER
 
+#include "GraphlyMathExports.h"
 #include "Vector.h"
 #include "FloatN.h"
 #include "Matrix4x4.h"
 #include "FloatNxM.h"
+#include "Transform.h"
+
+#include <limits>
 
 namespace GraphlyMath
 {
+	const double PI = 3.1415926535;
+	const double TWOPI = 6.2831853071;
+	const double PIDIV2 = 1.5707963267;
+	const double PIDIV4 = 0.7853981633;
+	const double E = 2.7182818284;
+
 	/**********************************************************
 	* Vector Section
 	* 
 	***********************************************************/
 
 	template<std::size_t N>
-	inline Vector<N> GRAPHLYMATH_API VectorZero() noexcept;
+	inline Vector<N> VectorZero() noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+
+		if constexpr (N == 2)
+			return Vector2(0.0f, 0.0f);
+		else if constexpr (N == 3)
+			return Vector3(0.0f, 0.0f, 0.0f);
+		else
+			return Vector4(0.0f, 0.0f, 0.0f, 0.0f);
+	}
+
 	template<std::size_t N>
-	inline Vector<N> GRAPHLYMATH_API VectorOne() noexcept;
+	inline Vector<N> VectorOne() noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+
+		if constexpr (N == 2)
+			return Vector2(1.0f, 1.0f);
+		else if constexpr (N == 3)
+			return Vector3(1.0f, 1.0f, 1.0f);
+		else
+			return Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+
 	template<std::size_t N>
-	inline Vector<N> GRAPHLYMATH_API VectorUnitX() noexcept;
+	inline Vector<N> VectorUnitX() noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+
+		if constexpr (N == 2)
+			return Vector2(1.0f, 0.0f);
+		else if constexpr (N == 3)
+			return Vector3(1.0f, 0.0f, 0.0f);
+		else
+			return Vector4(1.0f, 0.0f, 0.0f, 0.0f);
+	}
+
 	template<std::size_t N>
-	inline Vector<N> GRAPHLYMATH_API VectorUnitX(float x) noexcept;
+	inline Vector<N> VectorUnitX(float x) noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+
+		if constexpr (N == 2)
+			return Vector2(x, 0.0f);
+		else if constexpr (N == 3)
+			return Vector3(x, 0.0f, 0.0f);
+		else
+			return Vector4(x, 0.0f, 0.0f, 0.0f);
+	}
+
 	template<std::size_t N>
-	inline Vector<N> GRAPHLYMATH_API VectorUnitY() noexcept;
+	inline Vector<N> VectorUnitY() noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+
+		if constexpr (N == 2)
+			return Vector2(0.0f, 1.0f);
+		else if constexpr (N == 3)
+			return Vector3(0.0f, 1.0f, 0.0f);
+		else
+			return Vector4(0.0f, 1.0f, 0.0f, 0.0f);
+	}
+
 	template<std::size_t N>
-	inline Vector<N> GRAPHLYMATH_API VectorUnitY(float y) noexcept;
+	inline Vector<N> VectorUnitY(float y) noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+
+		if constexpr (N == 2)
+			return Vector2(0.0f, y);
+		else if constexpr (N == 3)
+			return Vector3(0.0f, y, 0.0f);
+		else
+			return Vector4(0.0f, y, 0.0f, 0.0f);
+	}
+
 	template<std::size_t N>
-	inline Vector<N> GRAPHLYMATH_API VectorUnitZ() noexcept;
+	inline Vector<N> VectorUnitZ() noexcept
+	{
+		static_assert(N >= 3 && N <= 4, "Invalid N dimension");
+
+		if constexpr (N == 3)
+			return Vector3(0.0f, 0.0f, 1.0f);
+		else
+			return Vector4(0.0f, 0.0f, 1.0f, 0.0f);
+	}
+
 	template<std::size_t N>
-	inline Vector<N> GRAPHLYMATH_API VectorUnitZ(float z) noexcept;
+	inline Vector<N> VectorUnitZ(float z) noexcept
+	{
+		static_assert(N >= 3 && N <= 4, "Invalid N dimension");
+
+		if constexpr (N == 3)
+			return Vector3(0.0f, 0.0f, z);
+		else
+			return Vector4(0.0f, 0.0f, z, 0.0f);
+	}
+
 	template<std::size_t N>
-	inline Vector<N> GRAPHLYMATH_API VectorUnitW() noexcept;
+	inline Vector<N> VectorUnitW() noexcept
+	{
+		static_assert(N == 4, "Invalid N dimension");
+
+		if constexpr (N == 4)
+			return Vector4(0.0f, 0.0f, 0.0f, 1.0f);
+	}
+
 	template<std::size_t N>
-	inline Vector<N> GRAPHLYMATH_API VectorUnitW(float w) noexcept;
+	inline Vector<N> VectorUnitW(float w) noexcept
+	{
+		static_assert(N == 4, "Invalid N dimension");
+
+		if constexpr (N == 4)
+			return Vector4(0.0f, 0.0f, 0.0f, w);
+	}
+
 	template<std::size_t N>
-	inline Vector<N> GRAPHLYMATH_API VectorReplicate(float val) noexcept;
+	inline Vector<N> VectorReplicate(float val) noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+
+		if constexpr (N == 2)
+			return Vector2(val, val);
+		else if constexpr (N == 3)
+			return Vector3(val, val, val);
+		else
+			return Vector4(val, val, val, val);
+	}
+
 	template<std::size_t N>
-	inline bool      GRAPHLYMATH_API VectorNearEqual(const Vector<N>& v, const Vector<N>& w, float epsilon) noexcept;
+	inline bool VectorNearEqual(const Vector<N>& v, const Vector<N>& w, float epsilon) noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+
+		if constexpr (N == 2)
+			return DirectX::XMVector2NearEqual(v, w, DirectX::XMVectorReplicate(epsilon));
+		else if constexpr (N == 3)
+			return DirectX::XMVector3NearEqual(v, w, DirectX::XMVectorReplicate(epsilon));
+		else
+			return DirectX::XMVector4NearEqual(v, w, DirectX::XMVectorReplicate(epsilon));
+	}
+
 	template<std::size_t N>
-	inline bool      GRAPHLYMATH_API VectorNearEqual(const Vector<N>& v, const Vector<N>& w, const Vector<N>& epsilon) noexcept;
-	template<std::size_t N, typename... Args>
-	inline Vector<N> GRAPHLYMATH_API VectorMin(Args&&... args) noexcept;
-	template<std::size_t N, typename... Args>
-	inline Vector<N> GRAPHLYMATH_API VectorMax(Args&&... args) noexcept;
+	inline bool VectorNearEqual(const Vector<N>& v, const Vector<N>& w, const Vector<N>& epsilon) noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+
+		if constexpr (N == 2)
+			return DirectX::XMVector2NearEqual(v, w, epsilon);
+		else if constexpr (N == 3)
+			return DirectX::XMVector3NearEqual(v, w, epsilon);
+		else
+			return DirectX::XMVector4NearEqual(v, w, epsilon);
+	}
+
 	template<std::size_t N>
-	inline void      GRAPHLYMATH_API VectorRound(const Vector<N>& v) noexcept;
+	inline void VectorRound(const Vector<N>& v) noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+		return DirectX::XMVectorRound(v);
+	}
+
 	template<std::size_t N>
-	inline void      GRAPHLYMATH_API VectorFloor(const Vector<N>& v) noexcept;
+	inline void VectorFloor(const Vector<N>& v) noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+		v = DirectX::XMVectorFloor(v);
+	}
+
 	template<std::size_t N>
-	inline void      GRAPHLYMATH_API VectorCeil(const Vector<N>& v) noexcept;
+	inline void VectorCeil(const Vector<N>& v) noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+		v = DirectX::XMVectorCeiling(v);
+	}
+
 	template<std::size_t N>
-	inline void      GRAPHLYMATH_API VectorClamp(const Vector<N>& v, float min, float max) noexcept;
+	inline void VectorClamp(const Vector<N>& v, float min, float max) noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+		v = DirectX::XMVectorClamp(v, DirectX::XMVectorReplicate(min), DirectX::XMVectorReplicate(max));
+	}
+
 	template<std::size_t N>
-	inline void      GRAPHLYMATH_API VectorClamp(const Vector<N>& v, const Vector<N>& min, const Vector<N>& max) noexcept;
+	inline void VectorClamp(const Vector<N>& v, const Vector<N>& min, const Vector<N>& max) noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+		v = DirectX::XMVectorClamp(v, min, max);
+	}
+
 	template<std::size_t N>
-	inline void      GRAPHLYMATH_API VectorNegate(const Vector<N>& v) noexcept;
+	inline void VectorNegate(const Vector<N>& v) noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+		v = DirectX::XMVectorNegate(v);
+	}
+
 	template<std::size_t N>
-	inline void      GRAPHLYMATH_API VectorAbs(const Vector<N>& v) noexcept;
+	inline void VectorAbs(const Vector<N>& v) noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+		v = DirectX::XMVectorAbs(v);
+	}
+
 	template<std::size_t N>
-	inline Vector<N> GRAPHLYMATH_API VectorLerp(const Vector<N>& v, const Vector<N>& w, float t) noexcept;
+	inline Vector<N> VectorLerp(const Vector<N>& v, const Vector<N>& w, float t) noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+		return DirectX::XMVectorLerp(v, w, t);
+	}
+
 	template<std::size_t N>
-	inline Vector<N> GRAPHLYMATH_API VectorLerp(const Vector<N>& v, const Vector<N>& w, const Vector<N>& t) noexcept;
+	inline Vector<N> VectorLerp(const Vector<N>& v, const Vector<N>& w, const Vector<N>& t) noexcept
+	{
+		static_assert(N >= 2 && N <= 4, "Invalid N dimension");
+		return DirectX::XMVectorLerpV(v, w, t);
+	}
 
 	/**********************************************************
 	* Float Section
@@ -68,83 +249,377 @@ namespace GraphlyMath
 	***********************************************************/
 
 	template<std::size_t N>
-	Float<N> GRAPHLYMATH_API FloatZero() noexcept;
+	Float<N> FloatZero() noexcept
+	{
+		if constexpr (N == 2)
+			return Float2(0.0f, 0.0f);
+		else if constexpr (N == 3)
+			return Float3(0.0f, 0.0f, 0.0f);
+		else if constexpr (N == 4)
+			return Float4(0.0f, 0.0f, 0.0f, 0.0f);
+
+		Float<N> result{};
+		for (int i = 0; i < N; ++i)
+			result[i] = 0.0f;
+		return result;
+	}
+
 	template<std::size_t N>
-	Float<N> GRAPHLYMATH_API FloatOne() noexcept;
+	Float<N> FloatOne() noexcept
+	{
+		if constexpr (N == 2)
+			return Float2(1.0f, 1.0f);
+		else if constexpr (N == 3)
+			return Float3(1.0f, 1.0f, 1.0f);
+		else if constexpr (N == 4)
+			return Float4(1.0f, 1.0f, 1.0f, 1.0f);
+
+		Float<N> result{};
+		for (int i = 0; i < N; ++i)
+			result[i] = 1.0f;
+		return result;
+	}
+
 	template<std::size_t N>
-	Float<N> GRAPHLYMATH_API FloatReplicate(float val) noexcept;
+	Float<N> FloatReplicate(float val) noexcept
+	{
+		if constexpr (N == 2)
+			return Float2(val, val);
+		else if constexpr (N == 3)
+			return Float3(val, val, val);
+		else if constexpr (N == 4)
+			return Float4(val, val, val, val);
+
+		Float<N> result{};
+		for (int i = 0; i < N; ++i)
+			result[i] = val;
+		return result;
+	}
+
 	template<std::size_t N>
-	bool     GRAPHLYMATH_API FloatNearEqual(const Float<N>& f0, const Float<N>& f1, float epsilon) noexcept;
+	bool FloatNearEqual(const Float<N>& f0, const Float<N>& f1, float epsilon) noexcept
+	{
+		for (int i = 0; i < N; ++i)
+			if (abs(f0[i] - f1[i]) >= epsilon)
+				return false;
+		return true;
+	}
+
 	template<std::size_t N>
-	bool     GRAPHLYMATH_API FloatNearEqual(const Float<N>& f0, const Float<N>& f1, const Float<N>& epsilon) noexcept;
-	template<std::size_t N, typename... Args>
-	Float<N> GRAPHLYMATH_API FloatMin(Args&&... args) noexcept;
-	template<std::size_t N, typename... Args>
-	Float<N> GRAPHLYMATH_API FloatMax(Args&&... args) noexcept;
+	bool FloatNearEqual(const Float<N>& f0, const Float<N>& f1, const Float<N>& epsilon) noexcept
+	{
+		for (int i = 0; i < N; ++i)
+			if (abs(f0[i] - f1[i]) >= epsilon[i])
+				return false;
+		return true;
+	}
+
 	template<std::size_t N>
-	void     GRAPHLYMATH_API FloatRound(const Float<N>& f) noexcept;
+	void FloatRound(const Float<N>& f) noexcept
+	{
+		for (int i = 0; i < N; ++i)
+			f[i] = round(f[i]);
+	}
+
 	template<std::size_t N>
-	void     GRAPHLYMATH_API FloatFloor(const Float<N>& f) noexcept;
+	void FloatFloor(const Float<N>& f) noexcept
+	{
+		for (int i = 0; i < N; ++i)
+			f[i] = floor(f[i]);
+	}
+
 	template<std::size_t N>
-	void     GRAPHLYMATH_API FloatCeil(const Float<N>& f) noexcept;
+	void FloatCeil(const Float<N>& f) noexcept
+	{
+		for (int i = 0; i < N; ++i)
+			f[i] = ceil(f[i]);
+	}
+
 	template<std::size_t N>
-	void     GRAPHLYMATH_API FloatClamp(const Float<N>& f, float min, float max) noexcept;
+	void FloatClamp(const Float<N>& f, float min, float max) noexcept
+	{
+		for (int i = 0; i < N; ++i)
+			if (f[i] < min)
+				f[i] = min;
+			else if (f[i] > max)
+				f[i] = max;
+	}
+
 	template<std::size_t N>
-	void     GRAPHLYMATH_API FloatClamp(const Float<N>& f, const Float<N>& min, const Float<N>& max) noexcept;
+	void FloatClamp(const Float<N>& f, const Float<N>& min, const Float<N>& max) noexcept
+	{
+		for (int i = 0; i < N; ++i)
+			if (f[i] < min[i])
+				f[i] = min[i];
+			else if (f[i] > max[i])
+				f[i] = max[i];
+	}
+
 	template<std::size_t N>
-	void     GRAPHLYMATH_API FloatNegate(const Float<N>& f) noexcept;
+	void FloatNegate(const Float<N>& f) noexcept
+	{
+		for (int i = 0; i < N; ++i)
+			f[i] = -f[i];
+	}
+
 	template<std::size_t N>
-	void     GRAPHLYMATH_API FloatAbs(const Float<N>& f) noexcept;
+	void FloatAbs(const Float<N>& f) noexcept
+	{
+		for (int i = 0; i < N; ++i)
+			f[i] = abs(f[i]);
+	}
+
 	template<std::size_t N>
-	Float<N> GRAPHLYMATH_API FloatLerp(const Float<N>& f0, const Float<N>& f1, float t) noexcept;
+	Float<N> FloatLerp(const Float<N>& f0, const Float<N>& f1, float t) noexcept
+	{
+		Float<N> result{};
+		for (int i = 0; i < N; ++i)
+			result[i] = f0[i] + t * (f1[i] - f0[i]);
+		return result;
+	}
+
 	template<std::size_t N>
-	Float<N> GRAPHLYMATH_API FloatLerp(const Float<N>& f0, const Float<N>& f1, const Float<N>& t) noexcept;
+	Float<N> FloatLerp(const Float<N>& f0, const Float<N>& f1, const Float<N>& t) noexcept
+	{
+		Float<N> result{};
+		for (int i = 0; i < N; ++i)
+			result[i] = f0[i] + t[i] * (f1[i] - f0[i]);
+		return result;
+	}
 
 	/**********************************************************
 	* Matrix4x4 Section
 	*
 	***********************************************************/
 
-	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4Identity() noexcept;
-	inline bool      GRAPHLYMATH_API Matrix4x4IsIdentity(const Matrix4x4& m) noexcept;
-	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4Transpose(const Matrix4x4& m) noexcept;
-	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4Translation(float offset) noexcept;
-	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4Translation(const Vector3& v) noexcept;
-	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4Scale(float scale) noexcept;
-	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4Scale(const Vector3& v) noexcept;
-	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4RotationX(float angle) noexcept;
-	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4RotationY(float angle) noexcept;
-	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4RotationZ(float angle) noexcept;
+	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4Identity() noexcept
+	{
+		return DirectX::XMMatrixIdentity();
+	}
+
+	inline bool GRAPHLYMATH_API Matrix4x4IsIdentity(const Matrix4x4& m) noexcept
+	{
+		return DirectX::XMMatrixIsIdentity(m);
+	}
+
+	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4Transpose(const Matrix4x4& m) noexcept
+	{
+		return DirectX::XMMatrixTranspose(m);
+	}
+
+	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4Translation(float offset) noexcept
+	{
+		return DirectX::XMMatrixTranslation(offset, offset, offset);
+	}
+
+	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4Translation(const Vector3& v) noexcept
+	{
+		return DirectX::XMMatrixTranslationFromVector(v);
+	}
+
+	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4Scale(float scale) noexcept
+	{
+		return DirectX::XMMatrixScaling(scale, scale, scale);
+	}
+
+	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4Scale(const Vector3& v) noexcept
+	{
+		return DirectX::XMMatrixScalingFromVector(v);
+	}
+
+	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4RotationX(float angle) noexcept
+	{
+		return DirectX::XMMatrixRotationX(angle);
+	}
+
+	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4RotationY(float angle) noexcept
+	{
+		return DirectX::XMMatrixRotationY(angle);
+	}
+
+	inline Matrix4x4 GRAPHLYMATH_API Matrix4x4RotationZ(float angle) noexcept
+	{
+		return DirectX::XMMatrixRotationZ(angle);
+	}
 
 	/**********************************************************
 	* Helper Functions Section
 	*
 	***********************************************************/
 
-	inline Vector2			GRAPHLYMATH_API ConvertFloat2ToVector2(const Float2& f2) noexcept;
-	inline Vector3			GRAPHLYMATH_API ConvertFloat3ToVector3(const Float3& f3) noexcept;
-	inline Vector4			GRAPHLYMATH_API ConvertFloat4ToVector4(const Float4& f4) noexcept;
-	inline Float2			GRAPHLYMATH_API ConvertVector2ToFloat2(const Vector2& v2) noexcept;
-	inline Float3			GRAPHLYMATH_API ConvertVector3ToFloat3(const Vector3& v3) noexcept;
-	inline Float4			GRAPHLYMATH_API ConvertVector4ToFloat4(const Vector4& v4) noexcept;
-	inline Matrix4x4		GRAPHLYMATH_API ConvertFloat4x4ToMatrix4x4(const Float4x4& f4x4) noexcept;
-	inline Float4x4			GRAPHLYMATH_API ConvertMatrix4x4ToFloat4x4(const Matrix4x4& m4x4) noexcept;
-	inline Float2			GRAPHLYMATH_API ConvertFloat4ToFloat2(const Float4& f4) noexcept;
-	inline Float2			GRAPHLYMATH_API ConvertFloat3ToFloat2(const Float3& f3) noexcept;
-	inline Float3           GRAPHLYMATH_API ConvertFloat4ToFloat3(const Float4& f4) noexcept;
-	inline Float3           GRAPHLYMATH_API ConvertFloat2ToFloat3(const Float2& f2) noexcept;
-	inline Float4           GRAPHLYMATH_API ConvertFloat3ToFloat4(const Float3& f3) noexcept;
-	inline Float4           GRAPHLYMATH_API ConvertFloat2ToFloat4(const Float2& f2) noexcept;
+	inline Vector2 GRAPHLYMATH_API ConvertFloat2ToVector2(const Float2& f2) noexcept
+	{
+		return Vector2(f2[0], f2[1]);
+	}
+
+	inline Vector3 GRAPHLYMATH_API ConvertFloat3ToVector3(const Float3& f3) noexcept
+	{
+		return Vector3(f3[0], f3[1], f3[2]);
+	}
+
+	inline Vector4 GRAPHLYMATH_API ConvertFloat4ToVector4(const Float4& f4) noexcept
+	{
+		return Vector4(f4[0], f4[1], f4[2], f4[3]);
+	}
+
+	inline Float2 GRAPHLYMATH_API ConvertVector2ToFloat2(const Vector2& v2) noexcept
+	{
+		return Float2(v2.GetX(), v2.GetY());
+	}
+
+	inline Float3 GRAPHLYMATH_API ConvertVector3ToFloat3(const Vector3& v3) noexcept
+	{
+		return Float3(v3.GetX(), v3.GetY(), v3.GetZ());
+	}
+
+	inline Float4 GRAPHLYMATH_API ConvertVector4ToFloat4(const Vector4& v4) noexcept
+	{
+		return Float4(v4.GetX(), v4.GetY(), v4.GetZ(), v4.GetW());
+	}
+
+	inline Matrix4x4 GRAPHLYMATH_API ConvertFloat4x4ToMatrix4x4(const Float4x4& f4x4) noexcept
+	{
+		return Matrix4x4(
+			ConvertFloat4ToVector4(f4x4.GetLine(0)),
+			ConvertFloat4ToVector4(f4x4.GetLine(1)),
+			ConvertFloat4ToVector4(f4x4.GetLine(2)),
+			ConvertFloat4ToVector4(f4x4.GetLine(3))
+		);
+	}
+
+	inline Float4x4 GRAPHLYMATH_API ConvertMatrix4x4ToFloat4x4(const Matrix4x4& m4x4) noexcept
+	{
+		return Float4x4(
+			ConvertVector4ToFloat4(m4x4.GetLine(0)),
+			ConvertVector4ToFloat4(m4x4.GetLine(1)),
+			ConvertVector4ToFloat4(m4x4.GetLine(2)),
+			ConvertVector4ToFloat4(m4x4.GetLine(3))
+		);
+	}
+
+	inline Float2 GRAPHLYMATH_API ConvertFloat4ToFloat2(const Float4& f4) noexcept
+	{
+		return Float2(f4[0], f4[1]);
+	}
+
+	inline Float2 GRAPHLYMATH_API ConvertFloat3ToFloat2(const Float3& f3) noexcept
+	{
+		return Float2(f3[0], f3[1]);
+	}
+
+	inline Float3 GRAPHLYMATH_API ConvertFloat4ToFloat3(const Float4& f4) noexcept
+	{
+		return Float3(f4[0], f4[1], f4[2]);
+	}
+
+	inline Float3 GRAPHLYMATH_API ConvertFloat2ToFloat3(const Float2& f2) noexcept
+	{
+		return Float3(f2[0], f2[1], 0.0f);
+	}
+
+	inline Float4 GRAPHLYMATH_API ConvertFloat3ToFloat4(const Float3& f3) noexcept
+	{
+		return Float4(f3[0], f3[1], f3[2], 0.0f);
+	}
+
+	inline Float4 GRAPHLYMATH_API ConvertFloat2ToFloat4(const Float2& f2) noexcept
+	{
+		return Float4(f2[0], f2[1], 0.0f, 0.0f);
+	}
+
 	template<std::size_t N, std::size_t M>
-	Float<M>                GRAPHLYMATH_API ConvertFloatNToFloatM(const Float<N>& fn) noexcept;
-	inline Float3x3         GRAPHLYMATH_API ConvertFloat3x4ToFloat3x3(const Float3x4& f3x4) noexcept;
-	inline Float3x3         GRAPHLYMATH_API ConvertFloat4x3ToFloat3x3(const Float4x3& f4x3) noexcept;
-	inline Float3x3         GRAPHLYMATH_API ConvertFloat4x4ToFloat3x3(const Float4x4& f4x4) noexcept;
-	inline Float4x4         GRAPHLYMATH_API ConvertFloat3x3ToFloat4x4(const Float3x3& f3x3) noexcept;
-	inline Float4x4         GRAPHLYMATH_API ConvertFloat3x4ToFloat4x4(const Float3x4& f3x4) noexcept;
-	inline Float4x4         GRAPHLYMATH_API ConvertFloat4x3ToFloat4x4(const Float4x3& f4x3) noexcept;
+	Float<M> ConvertFloatNToFloatM(const Float<N>& fn) noexcept
+	{
+		if constexpr (N == M)
+			return fn;
+		else if constexpr (N > M)
+		{
+			Float<M> result{};
+			for (int i = 0; i < M; ++i)
+				result[i] = fn[i];
+			return result;
+		}
+		else
+		{
+			Float<M> result{};
+			for (int i = 0; i < N; ++i)
+				result[i] = fn[i];
+			for (int i = N; i < M; ++i)
+				result[i] = 0.0f;
+			return result;
+		}
+	}
+
+	inline Float3x3 GRAPHLYMATH_API ConvertFloat3x4ToFloat3x3(const Float3x4& f3x4) noexcept
+	{
+		return Float3x3(
+			ConvertFloat4ToFloat3(f3x4.GetLine(0)),
+			ConvertFloat4ToFloat3(f3x4.GetLine(1)),
+			ConvertFloat4ToFloat3(f3x4.GetLine(2))
+		);
+	}
+
+	inline Float3x3 GRAPHLYMATH_API ConvertFloat4x3ToFloat3x3(const Float4x3& f4x3) noexcept
+	{
+		return Float3x3(
+			f4x3.GetLine(0),
+			f4x3.GetLine(1),
+			f4x3.GetLine(2)
+		);
+	}
+
+	inline Float3x3 GRAPHLYMATH_API ConvertFloat4x4ToFloat3x3(const Float4x4& f4x4) noexcept
+	{
+		return Float3x3(
+			ConvertFloat4ToFloat3(f4x4.GetLine(0)),
+			ConvertFloat4ToFloat3(f4x4.GetLine(1)),
+			ConvertFloat4ToFloat3(f4x4.GetLine(2))
+		);
+	}
+
+	inline Float4x4 GRAPHLYMATH_API ConvertFloat3x3ToFloat4x4(const Float3x3& f3x3) noexcept
+	{
+		return Float4x4(
+			ConvertFloat3ToFloat4(f3x3.GetLine(0)),
+			ConvertFloat3ToFloat4(f3x3.GetLine(1)),
+			ConvertFloat3ToFloat4(f3x3.GetLine(2)),
+			Float4(0.0f, 0.0f, 0.0f, 0.0f)
+		);
+	}
+
+	inline Float4x4 GRAPHLYMATH_API ConvertFloat3x4ToFloat4x4(const Float3x4& f3x4) noexcept
+	{
+		return Float4x4(
+			f3x4.GetLine(0),
+			f3x4.GetLine(1),
+			f3x4.GetLine(2),
+			Float4(0.0f, 0.0f, 0.0f, 0.0f)
+		);
+	}
+
+	inline Float4x4 GRAPHLYMATH_API ConvertFloat4x3ToFloat4x4(const Float4x3& f4x3) noexcept
+	{
+		return Float4x4(
+			ConvertFloat3ToFloat4(f4x3.GetLine(0)),
+			ConvertFloat3ToFloat4(f4x3.GetLine(1)),
+			ConvertFloat3ToFloat4(f4x3.GetLine(2)),
+			ConvertFloat3ToFloat4(f4x3.GetLine(3))
+		);
+	}
+
 	template<std::size_t N1, std::size_t M1, std::size_t N2, std::size_t M2>
-	FloatNxM<N2, M2>        GRAPHLYMATH_API ConvertFloatN1xM1ToFloatN2xM2(const FloatNxM<N1, M1>& m) noexcept;
+	FloatNxM<N2, M2> ConvertFloatN1xM1ToFloatN2xM2(const FloatNxM<N1, M1>& m) noexcept
+	{
+		FloatNxM<N2, M2> result{};
+		for (int i = 0; i < N2; ++i)
+			for (int j = 0; j < M2; ++j)
+				if (i < N1 && j < M1)
+					result.Set(m.Get(i, j), i, j);
+				else
+					result.Set(0.0f, i, j);
+
+		return result;
+	}
 }
 
 #endif // GRAPHLYMATH_HEADER

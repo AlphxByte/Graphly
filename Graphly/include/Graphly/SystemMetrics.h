@@ -11,8 +11,8 @@ namespace Graphly
 		SystemMetrics(SystemMetrics&& other) = delete;
 		~SystemMetrics() = default;
 
-		static unsigned GetScreenWidth();
-		static unsigned GetScreenHeight();
+		[[nodiscard]] static unsigned GetScreenWidth();
+		[[nodiscard]] static unsigned GetScreenHeight();
 
 		SystemMetrics& operator = (const SystemMetrics& other) = delete;
 		SystemMetrics& operator = (SystemMetrics&& other) = delete;

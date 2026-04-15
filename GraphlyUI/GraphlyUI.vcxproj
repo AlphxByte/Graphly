@@ -21,28 +21,77 @@
   <ItemGroup>
     <ClInclude Include="include\GraphlyUI\GraphlyUIExports.h" />
     <ClInclude Include="include\GraphlyUI\GraphlyUIInclude.h" />
-    <ClInclude Include="include\GraphlyUI\Window\Window.h" />
-    <ClInclude Include="include\GraphlyUI\Window\UIElement\Button.h" />
-    <ClInclude Include="include\GraphlyUI\Window\UIElement\Image.h" />
-    <ClInclude Include="include\GraphlyUI\Window\UIElement\TextField.h" />
-    <ClInclude Include="include\GraphlyUI\Window\UIElement\UIElement.h" />
-    <ClInclude Include="include\GraphlyUI\Window\WindowFlags.h" />
-    <ClInclude Include="include\GraphlyUI\Window\WindowSettings.h" />
-    <ClInclude Include="src\Window\UIContext\UIContext.h" />
-    <ClInclude Include="src\Window\UIContext\UIFactory\UIFactory.h" />
-    <ClInclude Include="src\Window\UIContext\UIRenderer\UIRenderer.h" />
-    <ClInclude Include="src\Window\WindowImpl.h" />
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\UIEvent.h" />
+    <ClInclude Include="include\GraphlyUI\UISystem\GraphicsSystemSettings.h" />
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\WindowEvent.h" />
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\Rectangle.h" />
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\TextFormatSettings.h" />
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\TextLayoutSettings.h" />
+    <ClInclude Include="src\UISystem\EventSystem.h" />
+    <ClInclude Include="src\UISystem\GraphicsSystem\D2DSystem\SolidColorBrush.h" />
+    <ClInclude Include="src\UISystem\GraphicsSystem\D2DSystem\D2DDevice.h" />
+    <ClInclude Include="src\UISystem\GraphicsSystem\D2DSystem\D2DSystem.h" />
+    <ClInclude Include="src\UISystem\GraphicsSystem\D2DSystem\D2DFactory.h" />
+    <ClInclude Include="src\UISystem\GraphicsSystem\SwapChain\RenderTarget.h" />
+    <ClInclude Include="src\UISystem\GraphicsSystem\GraphicsDevice\Adapter.h" />
+    <ClInclude Include="src\UISystem\GraphicsSystem\GraphicsDevice\D3DDevice.h" />
+    <ClInclude Include="src\UISystem\GraphicsSystem\GraphicsDevice\DXGIDevice.h" />
+    <ClInclude Include="src\UISystem\GraphicsSystem\GraphicsDevice\DXGIFactory.h" />
+    <ClInclude Include="src\UISystem\GraphicsSystem\GraphicsDevice\GraphicsDevice.h" />
+    <ClInclude Include="src\UISystem\GraphicsSystem\SwapChain\SwapChain.h" />
+    <ClInclude Include="src\UISystem\GraphicsSystem\GraphicsSystem.h" />
+    <ClInclude Include="include\GraphlyUI\UISystem\UISystem.h" />
+    <ClInclude Include="src\UISystem\GraphicsSystem\TextSystem\TextFormat.h" />
+    <ClInclude Include="src\UISystem\UIRenderer.h" />
+    <ClInclude Include="src\UISystem\UISystemEvent.h" />
+    <ClInclude Include="src\UISystem\Window\UIElement\ButtonImpl.h" />
+    <ClInclude Include="src\UISystem\Window\UIElement\RectangleImpl.h" />
+    <ClInclude Include="src\UISystem\Window\UIElement\TextImpl.h" />
+    <ClInclude Include="src\UISystem\GraphicsSystem\TextSystem\TextSystem.h" />
+    <ClInclude Include="src\UISystem\GraphicsSystem\TextSystem\WriteFactory.h" />
+    <ClInclude Include="src\UISystem\UISystemImpl.h" />
+    <ClInclude Include="src\UISystem\WindowFactory.h" />
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\Window.h" />
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\Button.h" />
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\Image.h" />
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\Text.h" />
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\UIElement\UIElement.h" />
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\WindowFlags.h" />
+    <ClInclude Include="include\GraphlyUI\UISystem\Window\WindowSettings.h" />
+    <ClInclude Include="src\UISystem\Window\UIContext.h" />
+    <ClInclude Include="src\UISystem\Window\UIFactory.h" />
+    <ClInclude Include="src\UISystem\Window\UIElement\UIElementImpl.h" />
+    <ClInclude Include="src\UISystem\Window\WindowImpl.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Window\UIContext\UIRenderer\UIRenderer.cpp" />
-    <ClCompile Include="src\Window\WindowSettings.cpp" />
-    <ClCompile Include="src\Window\UIElement\Button.cpp" />
-    <ClCompile Include="src\Window\UIElement\Image.cpp" />
-    <ClCompile Include="src\Window\UIElement\TextField.cpp" />
-    <ClCompile Include="src\Window\UIContext\UIContext.cpp" />
-    <ClCompile Include="src\Window\UIElement\UIElement.cpp" />
-    <ClCompile Include="src\Window\UIContext\UIFactory\UIFactory.cpp" />
-    <ClCompile Include="src\Window\Window.cpp" />
+    <ClCompile Include="src\UISystem\EventSystem.cpp" />
+    <ClCompile Include="src\UISystem\GraphicsSystem\D2DSystem\SolidColorBrush.cpp" />
+    <ClCompile Include="src\UISystem\GraphicsSystem\D2DSystem\D2DDevice.cpp" />
+    <ClCompile Include="src\UISystem\GraphicsSystem\D2DSystem\D2DFactory.cpp" />
+    <ClCompile Include="src\UISystem\GraphicsSystem\D2DSystem\D2DSystem.cpp" />
+    <ClCompile Include="src\UISystem\GraphicsSystem\SwapChain\RenderTarget.cpp" />
+    <ClCompile Include="src\UISystem\GraphicsSystem\GraphicsDevice\Adapter.cpp" />
+    <ClCompile Include="src\UISystem\GraphicsSystem\GraphicsDevice\D3DDevice.cpp" />
+    <ClCompile Include="src\UISystem\GraphicsSystem\GraphicsDevice\DXGIDevice.cpp" />
+    <ClCompile Include="src\UISystem\GraphicsSystem\GraphicsDevice\DXGIFactory.cpp" />
+    <ClCompile Include="src\UISystem\GraphicsSystem\GraphicsDevice\GraphicsDevice.cpp" />
+    <ClCompile Include="src\UISystem\GraphicsSystem\SwapChain\SwapChain.cpp" />
+    <ClCompile Include="src\UISystem\GraphicsSystem\GraphicsSystem.cpp" />
+    <ClCompile Include="src\UISystem\GraphicsSystem\TextSystem\TextFormat.cpp" />
+    <ClCompile Include="src\UISystem\GraphicsSystem\TextSystem\TextSystem.cpp" />
+    <ClCompile Include="src\UISystem\GraphicsSystem\TextSystem\WriteFactory.cpp" />
+    <ClCompile Include="src\UISystem\UIRenderer.cpp" />
+    <ClCompile Include="src\UISystem\UISystem.cpp" />
+    <ClCompile Include="src\UISystem\WindowFactory.cpp" />
+    <ClCompile Include="src\UISystem\Window\UIContext.cpp" />
+    <ClCompile Include="src\UISystem\Window\UIElement\Rectangle.cpp" />
+    <ClCompile Include="src\UISystem\Window\WindowSettings.cpp" />
+    <ClCompile Include="src\UISystem\Window\UIElement\Button.cpp" />
+    <ClCompile Include="src\UISystem\Window\UIElement\Image.cpp" />
+    <ClCompile Include="src\UISystem\Window\UIElement\Text.cpp" />
+    <ClCompile Include="src\UISystem\Window\UIElement\UIElement.cpp" />
+    <ClCompile Include="src\UISystem\Window\UIFactory.cpp" />
+    <ClCompile Include="src\UISystem\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GraphlyMath\GraphlyMath.vcxproj">
@@ -137,7 +186,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;GRAPHLYUI_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GRAPHLYUI_EXPORTS;NOMINMAX</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -149,7 +198,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;d2d1.lib;dwrite.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -159,7 +208,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;GRAPHLYUI_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GRAPHLYUI_EXPORTS;NOMINMAX</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -171,7 +220,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;d2d1.lib;dwrite.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
